@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2817%29.png)
+![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2819%29.png)
 
-![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2813%29.png)
+![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2814%29.png)
 
 ### Explanation
 
@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Haswell Boot CC Section](../.gitbook/assets/image%20%283%29.png)
+![Haswell Boot CC Section](../.gitbook/assets/image%20%284%29.png)
 
 ### Explanation
 
@@ -201,38 +201,46 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 ### Raw XML
 
 ```markup
-    <key>Devices</key>
-    <dict>
-        <key>Audio</key>
-        <dict>
-            <key>Inject</key>
-            <integer>1</integer>
-            <key>ResetHDA</key>
-            <true/>
-        </dict>
-        <key>Properties</key>
-        <dict>
-            <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
-            <dict>
-                <key>AAPL,ig-platform-id</key>
-                <data>
-                AAASGQ==
-                </data>
-            </dict>
-        </dict>
-        <key>USB</key>
-        <dict>
-            <key>FixOwnership</key>
-            <true/>
-        </dict>
-    </dict>
+	<key>Devices</key>
+	<dict>
+		<key>Audio</key>
+		<dict>
+			<key>Inject</key>
+			<integer>1</integer>
+			<key>ResetHDA</key>
+			<true/>
+		</dict>
+		<key>Properties</key>
+		<dict>
+			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+			<dict>
+				<key>AAPL,ig-platform-id</key>
+				<data>
+				AAASGQ==
+				</data>
+				<key>framebuffer-patch-enable</key>
+				<data>
+				AQAAAA==
+				</data>
+				<key>framebuffer-stolenmem</key>
+				<data>
+				AAAwAQ==
+				</data>
+			</dict>
+		</dict>
+		<key>USB</key>
+		<dict>
+			<key>FixOwnership</key>
+			<true/>
+		</dict>
+	</dict>
 ```
 
 ### Clover Configurator Screenshots
 
-![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%287%29.png)
+![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2818%29.png)
 
-![Skylake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2811%29.png)
+![Skylake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image.png)
 
 ### Explanation
 
@@ -265,6 +273,8 @@ The two ig-platform-id's we use are as follows:
   * `01001219` when hex-swapped
   * `AQASGQ==` when the hex-swapped version is converted to base64
 
+We also add 2 more properties, _framebuffer-patch-enable_ and _framebuffer-stolenmem_.  The first enables patching via _WhateverGreen.kext,_ and the second sets the min stolen memory to 19MB.
+
 ## Disable Drivers
 
 We have nothing to do here.
@@ -288,7 +298,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Haswell Gui CC Section](../.gitbook/assets/image%20%2815%29.png)
+![Haswell Gui CC Section](../.gitbook/assets/image%20%2816%29.png)
 
 ### Explanation
 
@@ -418,7 +428,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2816%29.png)
+![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2817%29.png)
 
 ### Explanation
 
@@ -468,9 +478,9 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Skylake RtVariables CC Section](../.gitbook/assets/image%20%282%29.png)
+![Skylake RtVariables CC Section](../.gitbook/assets/image%20%283%29.png)
 
-![Skylake SMBIOS CC Section](../.gitbook/assets/image%20%2812%29.png)
+![Skylake SMBIOS CC Section](../.gitbook/assets/image%20%2813%29.png)
 
 ### Explanation
 
@@ -533,7 +543,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%288%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%289%29.png)
 
 ### Explanation
 
@@ -549,5 +559,5 @@ We set it to `Yes` to make sure that all the kexts we added before get injected 
 
 ## Saving
 
-At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://pastebin.com/tSHkM0ek) too.
+At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://pastebin.com/VWHb2NzH) too.
 
