@@ -541,3 +541,17 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Explanation
 
+#### Inject Kexts:
+
+This setting has 3 modes:
+
+* `Yes` - this tells Clover to inject kexts from the EFI regardless.
+* `No` - this tells Clover not to inject kexts from the EFI.
+* `Detect` - this has Clover inject kexts only if _FakeSMC.kext_ is not in the kext cache.
+
+We set it to `Yes` to make sure that all the kexts we added before get injected properly.
+
+## Saving
+
+At this point, you can do _File -&gt; Save_ to save the config.plist.  If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over.  I'll leave the [sample config.plist here](https://pastebin.com/tSHkM0ek) too.
+
