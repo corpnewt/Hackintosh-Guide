@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2819%29.png)
+![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2821%29.png)
 
-![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2814%29.png)
+![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2816%29.png)
 
 ### Explanation
 
@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Skylake Boot CC Section](../.gitbook/assets/image%20%284%29.png)
+![Skylake Boot CC Section](../.gitbook/assets/image%20%285%29.png)
 
 ### Explanation
 
@@ -238,7 +238,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2818%29.png)
+![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2820%29.png)
 
 ![Skylake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image.png)
 
@@ -298,7 +298,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Skylake Gui CC Section](../.gitbook/assets/image%20%2816%29.png)
+![Skylake Gui CC Section](../.gitbook/assets/image%20%2818%29.png)
 
 ### Explanation
 
@@ -428,7 +428,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2817%29.png)
+![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2819%29.png)
 
 ### Explanation
 
@@ -478,9 +478,9 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Skylake RtVariables CC Section](../.gitbook/assets/image%20%283%29.png)
+![Skylake RtVariables CC Section](../.gitbook/assets/image%20%284%29.png)
 
-![Skylake SMBIOS CC Section](../.gitbook/assets/image%20%2813%29.png)
+![Skylake SMBIOS CC Section](../.gitbook/assets/image%20%2815%29.png)
 
 ### Explanation
 
@@ -543,7 +543,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%289%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2810%29.png)
 
 ### Explanation
 
@@ -559,5 +559,5 @@ We set it to `Yes` to make sure that all the kexts we added before get injected 
 
 ## Saving
 
-At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://pastebin.com/VWHb2NzH) too.
+At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://pastebin.com/qrEYjQXk) too.
 
