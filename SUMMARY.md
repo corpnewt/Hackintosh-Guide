@@ -9,4 +9,5 @@
 ## Config.Plist Per Hardware
 
 * [Haswell](config.plist-per-hardware/haswell.md)
+* [Skylake](config.plist-per-hardware/skylake.md)
 
