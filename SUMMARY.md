@@ -6,3 +6,7 @@
 * [Clover Setup](clover-setup.md)
 * [Config.plist Basics](config.plist-basics.md)
 
+## Config.Plist Per Hardware
+
+* [Haswell](config.plist-per-hardware/haswell.md)
+
