@@ -8,17 +8,17 @@ description: >-
 
 ## Starting Points
 
-I like to start with either the stock _config.plist_ that Clover gives you, or with just a blank canvas.  In the next examples, I'll show you how I set things up from scratch; if you start from somewhere else, you may have more things checked/set than I do - but you'll want to follow along with what I do.
+I like to start with either the stock _config.plist_ that Clover gives you, or with just a blank canvas. In the next examples, I'll show you how I set things up from scratch; if you start from somewhere else, you may have more things checked/set than I do - but you'll want to follow along with what I do.
 
 I'll also include the raw xml examples too in order to show those that work with a text editor \(as I prefer to\).
 
 ## ACPI
 
-The default Clover settings are pretty overdone and can cause some issues.  We'll keep this section fairly minimal, and I'll go through a bit of _why we do that_ for each part as well.
+The default Clover settings are pretty overdone and can cause some issues. We'll keep this section fairly minimal, and I'll go through a bit of _why we do that_ for each part as well.
 
 ### Raw XML
 
-```xml
+```markup
     <key>ACPI</key>
     <dict>
         <key>DSDT</key>
@@ -108,15 +108,15 @@ The default Clover settings are pretty overdone and can cause some issues.  We'l
 
 ### Clover Configurator Screenshots
 
-![Haswell Acpi CC Section 1](../.gitbook/assets/image%20%281%29.png)
+![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2817%29.png)
 
-![Haswell Acpi CC Section 2](../.gitbook/assets/image%20%283%29.png)
+![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2813%29.png)
 
 ### Explanation
 
 #### Patches:
 
-The first thing we'll go over is the _Patches_ section.  This section allows us to dynamically rename parts of the DSDT via Clover.  Since we're not running a real mac, and macOS is pretty particular with how things are named, we can make non-destructive changes to keep things mac-friendly.  We have three entries here:
+The first thing we'll go over is the _Patches_ section. This section allows us to dynamically rename parts of the DSDT via Clover. Since we're not running a real mac, and macOS is pretty particular with how things are named, we can make non-destructive changes to keep things mac-friendly. We have three entries here:
 
 * _change XHCI to XHC -_ helps avoid a conflict with built-in USB injectors
 * _change XHC1 to XHC_ - helps avoid a conflict with built-in USB injectors
@@ -131,7 +131,7 @@ If we look then at the _Fixes_ section, we'll see that we have a few things chec
 
 #### Drop Tables:
 
-We touched in gently on DSDT with our _Patches_ section - and this is a a bit of an extension of that.  SSDT is like a sub-section of DSDT.  The _Drop Tables_ section allows us to omit certain SSDT tables from loading \(as I mentioned before, mac and PC DSDT is different, and macOS can be rather picky\).  The two that I've added are as follows:
+We touched in gently on DSDT with our _Patches_ section - and this is a a bit of an extension of that. SSDT is like a sub-section of DSDT. The _Drop Tables_ section allows us to omit certain SSDT tables from loading \(as I mentioned before, mac and PC DSDT is different, and macOS can be rather picky\). The two that I've added are as follows:
 
 * _DMAR_ - this prevents some issues with Vt-d; which is PCI passthrough for VMs, and not very functional \(if at all?\) on Hackintoshes.
 * _MATS_ - with High Sierra on up this table is parsed, and can sometimes contain unprintable characters that can lead to a kernel panic.
@@ -150,20 +150,20 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 ### Raw XML
 
 ```markup
-	<key>Boot</key>
-	<dict>
-		<key>Arguments</key>
-		<string>keepsyms=1 dart=0 debug=0x100 shikigva=40 -v</string>
-		<key>DefaultVolume</key>
-		<string>LastBootedVolume</string>
-		<key>Timeout</key>
-		<integer>5</integer>
-	</dict>
+    <key>Boot</key>
+    <dict>
+        <key>Arguments</key>
+        <string>keepsyms=1 dart=0 debug=0x100 shikigva=40 -v</string>
+        <key>DefaultVolume</key>
+        <string>LastBootedVolume</string>
+        <key>Timeout</key>
+        <integer>5</integer>
+    </dict>
 ```
 
 ### Clover Configurator Screenshots
 
-![Haswell Boot CC Section](../.gitbook/assets/image%20%282%29.png)
+![Haswell Boot CC Section](../.gitbook/assets/image%20%283%29.png)
 
 ### Explanation
 
@@ -188,7 +188,7 @@ These are the only other settings I've updated in this section.
 
 ## Boot Graphics
 
-Nothing here - just the stock settings.  You could adjust this if Clover's scaling needs changes, but I don't mess with it.
+Nothing here - just the stock settings. You could adjust this if Clover's scaling needs changes, but I don't mess with it.
 
 ## Cpu
 
@@ -201,58 +201,58 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 ### Raw XML
 
 ```markup
-	<key>Devices</key>
-	<dict>
-		<key>Audio</key>
-		<dict>
-			<key>Inject</key>
-			<integer>1</integer>
-			<key>ResetHDA</key>
-			<true/>
-		</dict>
-		<key>Properties</key>
-		<dict>
-			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
-			<dict>
-				<key>AAPL,ig-platform-id</key>
-				<data>
-				AAASGQ==
-				</data>
-			</dict>
-		</dict>
-		<key>USB</key>
-		<dict>
-			<key>FixOwnership</key>
-			<true/>
-		</dict>
-	</dict>
+    <key>Devices</key>
+    <dict>
+        <key>Audio</key>
+        <dict>
+            <key>Inject</key>
+            <integer>1</integer>
+            <key>ResetHDA</key>
+            <true/>
+        </dict>
+        <key>Properties</key>
+        <dict>
+            <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+            <dict>
+                <key>AAPL,ig-platform-id</key>
+                <data>
+                AAASGQ==
+                </data>
+            </dict>
+        </dict>
+        <key>USB</key>
+        <dict>
+            <key>FixOwnership</key>
+            <true/>
+        </dict>
+    </dict>
 ```
 
 ### Clover Configurator Screenshots
 
-![Haswell Devices CC Section - iGPU](../.gitbook/assets/image%20%288%29.png)
+![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%287%29.png)
 
-![Haswell Devices CC Section - iGPU \(Connectorless\) + dGPU](../.gitbook/assets/image%20%285%29.png)
+![Skylake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2811%29.png)
 
 ### Explanation
 
 #### Fake ID:
 
-This section remains empty for our example setup.  In the past, almost-supported iGPUs \(like the HD 4400\) would get faked to a supported iGPU here, but we'll be using the cleaner Properties section for this.
+This section remains empty for our example setup. In the past, almost-supported iGPUs \(like the HD 4400\) would get faked to a supported iGPU here, but we'll be using the cleaner Properties section for this.
 
 #### USB:
 
-Under this section, we ensure that _Inject_ and _FixOwnership_ are selected to avoid issues with hanging at a half-printed line somewhere around the `Enabling Legacy Matching` verbose line.  You can also get past that by enabling _XHCI Hand Off_ in BIOS.
+Under this section, we ensure that _Inject_ and _FixOwnership_ are selected to avoid issues with hanging at a half-printed line somewhere around the `Enabling Legacy Matching` verbose line. You can also get past that by enabling _XHCI Hand Off_ in BIOS.
 
 #### Audio:
 
 Here we set our audio to inject _Layout 1_ - this may or may not be compatible with your codec, but you can check on [_AppleALC's Supported Codec Page_](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs).
 
-We also enabled _ResetHDA_ which puts the codec back in a neutral state between OS reboots.  This prevents some issues with no audio after booting to another OS and then back.
+We also enabled _ResetHDA_ which puts the codec back in a neutral state between OS reboots. This prevents some issues with no audio after booting to another OS and then back.
 
 #### Properties:
 
-This section is setup via Headkaze's [_Intel Framebuffer Patching Guide_](https://www.insanelymac.com/forum/topic/334899-intel-framebuffer-patching-using-whatevergreen/?tab=comments#comment-2626271) and applies only one actual property to begin, which is the _ig-platform-id_.  The way we get the proper value for this is to look at the ig-platform-id we intend to use, then swap the pairs of hex bytes.
+This section is setup via Headkaze's [_Intel Framebuffer Patching Guide_](https://www.insanelymac.com/forum/topic/334899-intel-framebuffer-patching-using-whatevergreen/?tab=comments#comment-2626271) and applies only one actual property to begin, which is the _ig-platform-id_. The way we get the proper value for this is to look at the ig-platform-id we intend to use, then swap the pairs of hex bytes.
 
 If we think of our ig-plat as `0xAABBCCDD`, our swapped version would look like `0xDDCCBBAA`.
 
@@ -274,31 +274,31 @@ We have nothing to do here.
 ### Raw XML
 
 ```markup
-	<key>GUI</key>
-	<dict>
-		<key>Scan</key>
-		<dict>
-			<key>Entries</key>
-			<true/>
-			<key>Tool</key>
-			<true/>
-		</dict>
-	</dict>
+    <key>GUI</key>
+    <dict>
+        <key>Scan</key>
+        <dict>
+            <key>Entries</key>
+            <true/>
+            <key>Tool</key>
+            <true/>
+        </dict>
+    </dict>
 ```
 
 ### Clover Configurator Screenshots
 
-![Haswell Gui CC Section](../.gitbook/assets/image%20%2810%29.png)
+![Haswell Gui CC Section](../.gitbook/assets/image%20%2815%29.png)
 
 ### Explanation
 
 #### Scan:
 
-The only settings I've tweaked on this page are the _Scan_ settings.  I've selected _Custom_, then checked everything except _Legacy_ and _Kernel_.  This just omits some of the unbootable entries in Clover to clean up the menu.
+The only settings I've tweaked on this page are the _Scan_ settings. I've selected _Custom_, then checked everything except _Legacy_ and _Kernel_. This just omits some of the unbootable entries in Clover to clean up the menu.
 
 #### Hide Volumes:
 
-I haven't added anything here, but you _can_ hide unwanted volumes here.  You can do so by either adding the volume's name, or UUID.
+I haven't added anything here, but you _can_ hide unwanted volumes here. You can do so by either adding the volume's name, or UUID.
 
 To hide extra APFS entries, add the following to this list:
 
@@ -328,97 +328,97 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 ### Raw XML
 
 ```markup
-	<key>KernelAndKextPatches</key>
-	<dict>
-		<key>KernelPm</key>
-		<true/>
-		<key>KextsToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>Port limit increase</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				g710////EA==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.12.x</string>
-				<key>Name</key>
-				<string>com.apple.driver.usb.AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>
-				g710////Gw==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Port limit increase (RehabMan)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				g32IDw+DpwQAAA==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.13.x</string>
-				<key>Name</key>
-				<string>com.apple.driver.usb.AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>
-				g32ID5CQkJCQkA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Port limit increase (PMHeart)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				g/sPD4MDBQAA
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.14.x</string>
-				<key>Name</key>
-				<string>com.apple.driver.usb.AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>
-				g/sPkJCQkJCQ
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>External Icons Patch</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				RXh0ZXJuYWw=
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>AppleAHCIPort</string>
-				<key>Replace</key>
-				<data>
-				SW50ZXJuYWw=
-				</data>
-			</dict>
-		</array>
-	</dict>
+    <key>KernelAndKextPatches</key>
+    <dict>
+        <key>KernelPm</key>
+        <true/>
+        <key>KextsToPatch</key>
+        <array>
+            <dict>
+                <key>Comment</key>
+                <string>Port limit increase</string>
+                <key>Disabled</key>
+                <false/>
+                <key>Find</key>
+                <data>
+                g710////EA==
+                </data>
+                <key>InfoPlistPatch</key>
+                <false/>
+                <key>MatchOS</key>
+                <string>10.12.x</string>
+                <key>Name</key>
+                <string>com.apple.driver.usb.AppleUSBXHCI</string>
+                <key>Replace</key>
+                <data>
+                g710////Gw==
+                </data>
+            </dict>
+            <dict>
+                <key>Comment</key>
+                <string>Port limit increase (RehabMan)</string>
+                <key>Disabled</key>
+                <false/>
+                <key>Find</key>
+                <data>
+                g32IDw+DpwQAAA==
+                </data>
+                <key>InfoPlistPatch</key>
+                <false/>
+                <key>MatchOS</key>
+                <string>10.13.x</string>
+                <key>Name</key>
+                <string>com.apple.driver.usb.AppleUSBXHCI</string>
+                <key>Replace</key>
+                <data>
+                g32ID5CQkJCQkA==
+                </data>
+            </dict>
+            <dict>
+                <key>Comment</key>
+                <string>Port limit increase (PMHeart)</string>
+                <key>Disabled</key>
+                <false/>
+                <key>Find</key>
+                <data>
+                g/sPD4MDBQAA
+                </data>
+                <key>InfoPlistPatch</key>
+                <false/>
+                <key>MatchOS</key>
+                <string>10.14.x</string>
+                <key>Name</key>
+                <string>com.apple.driver.usb.AppleUSBXHCI</string>
+                <key>Replace</key>
+                <data>
+                g/sPkJCQkJCQ
+                </data>
+            </dict>
+            <dict>
+                <key>Comment</key>
+                <string>External Icons Patch</string>
+                <key>Disabled</key>
+                <false/>
+                <key>Find</key>
+                <data>
+                RXh0ZXJuYWw=
+                </data>
+                <key>InfoPlistPatch</key>
+                <false/>
+                <key>Name</key>
+                <string>AppleAHCIPort</string>
+                <key>Replace</key>
+                <data>
+                SW50ZXJuYWw=
+                </data>
+            </dict>
+        </array>
+    </dict>
 ```
 
 ### Clover Configurator Screenshots
 
-![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2811%29.png)
+![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2816%29.png)
 
 ### Explanation
 
@@ -433,48 +433,48 @@ We have a couple checkboxes selected here:
 
 #### KextsToPatch:
 
-We added 4 different kexts to patch here.  Three of them are for USB port limit increases, and the last acts as an _orange icons fix_ - when internal drives are hotpluggable, and treated as external drives.
+We added 4 different kexts to patch here. Three of them are for USB port limit increases, and the last acts as an _orange icons fix_ - when internal drives are hotpluggable, and treated as external drives.
 
-You'll notice that there are MatchOS values set for each of the USB port limit patches.  You can remove any of the entries for OS versions you don't intend to run.  They won't do any harm being there, but if you want a clean, minimal plist, there's no sense in having them.
+You'll notice that there are MatchOS values set for each of the USB port limit patches. You can remove any of the entries for OS versions you don't intend to run. They won't do any harm being there, but if you want a clean, minimal plist, there's no sense in having them.
 
 ## RtVariables And SMBIOS
 
 ### Raw XML
 
 ```markup
-	<key>RtVariables</key>
-	<dict>
-		<key>BooterConfig</key>
-		<string>0x28</string>
-		<key>CsrActiveConfig</key>
-		<string>0x3E7</string>
-		<key>MLB</key>
-		<string>C02634902QXGPF7FB</string>
-		<key>ROM</key>
-		<string>UseMacAddr0</string>
-	</dict>
-	<key>SMBIOS</key>
-	<dict>
-		<key>BoardSerialNumber</key>
-		<string>C02634902QXGPF7FB</string>
-		<key>ProductName</key>
-		<string>iMac17,1</string>
-		<key>SerialNumber</key>
-		<string>C02S8DY7GG7L</string>
-		<key>SmUUID</key>
-		<string>DD574F3E-5774-414A-8FF9-5B0089B09480</string>
-	</dict>
+    <key>RtVariables</key>
+    <dict>
+        <key>BooterConfig</key>
+        <string>0x28</string>
+        <key>CsrActiveConfig</key>
+        <string>0x3E7</string>
+        <key>MLB</key>
+        <string>C02634902QXGPF7FB</string>
+        <key>ROM</key>
+        <string>UseMacAddr0</string>
+    </dict>
+    <key>SMBIOS</key>
+    <dict>
+        <key>BoardSerialNumber</key>
+        <string>C02634902QXGPF7FB</string>
+        <key>ProductName</key>
+        <string>iMac17,1</string>
+        <key>SerialNumber</key>
+        <string>C02S8DY7GG7L</string>
+        <key>SmUUID</key>
+        <string>DD574F3E-5774-414A-8FF9-5B0089B09480</string>
+    </dict>
 ```
 
 ### Clover Configurator Screenshots
 
-![Haswell Rt Variables CC Section](../.gitbook/assets/image%20%284%29.png)
+![Skylake RtVariables CC Section](../.gitbook/assets/image%20%282%29.png)
 
-![Haswell SMBIOS CC Section](../.gitbook/assets/image%20%289%29.png)
+![Skylake SMBIOS CC Section](../.gitbook/assets/image%20%2812%29.png)
 
 ### Explanation
 
-For setting up the SMBIOS info, I use acidanthera's [_macserial_](https://github.com/acidanthera/macserial) application.  I wrote a [_python script_](https://github.com/corpnewt/Plist-Tool) that can leverage it as well \(and auto-saves tot he config.plist when selected\).  There's plenty of info that's left blank to allow Clover to fill in the blanks; this means that updating Clover will update the info passed, and not require you to also update your config.plist.
+For setting up the SMBIOS info, I use acidanthera's [_macserial_](https://github.com/acidanthera/macserial) application. I wrote a [_python script_](https://github.com/corpnewt/Plist-Tool) that can leverage it as well \(and auto-saves tot he config.plist when selected\). There's plenty of info that's left blank to allow Clover to fill in the blanks; this means that updating Clover will update the info passed, and not require you to also update your config.plist.
 
 For this Skylake example, I chose the _iMac17,1_ SMBIOS.
 
@@ -513,7 +513,7 @@ We can create an SmUUID by running `uuidgen` in the terminal \(or it's auto-gene
 
 We set _Rt Variables -&gt; ROM_ to `UseMacAddr0` which just utilizes our onboard Mac address - this should be unique enough to not conflict with any others.
 
-_BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which effectively disables SIP.  You can choose a number of other options to enable/disable sections of SIP.  Some common ones are as follows:
+_BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which effectively disables SIP. You can choose a number of other options to enable/disable sections of SIP. Some common ones are as follows:
 
 * `0x0` - SIP completely enabled
 * `0x3` - Allow unsigned kexts and writing to protected fs locations
@@ -524,16 +524,16 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 ### Raw XML
 
 ```markup
-	<key>SystemParameters</key>
-	<dict>
-		<key>InjectKexts</key>
-		<string>Yes</string>
-	</dict>
+    <key>SystemParameters</key>
+    <dict>
+        <key>InjectKexts</key>
+        <string>Yes</string>
+    </dict>
 ```
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%286%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%288%29.png)
 
 ### Explanation
 
@@ -549,5 +549,5 @@ We set it to `Yes` to make sure that all the kexts we added before get injected 
 
 ## Saving
 
-At this point, you can do _File -&gt; Save_ to save the config.plist.  If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over.  I'll leave the [sample config.plist here](https://pastebin.com/tSHkM0ek) too.
+At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://pastebin.com/tSHkM0ek) too.
 
