@@ -18,7 +18,7 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Raw XML
 
-```xml
+```markup
     <key>ACPI</key>
     <dict>
         <key>DSDT</key>
@@ -149,7 +149,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Raw XML
 
-```xml
+```markup
     <key>Boot</key>
     <dict>
         <key>Arguments</key>
@@ -200,40 +200,40 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Raw XML
 
-```xml
-	<key>Devices</key>
-	<dict>
-		<key>Audio</key>
-		<dict>
-			<key>Inject</key>
-			<integer>1</integer>
-			<key>ResetHDA</key>
-			<true/>
-		</dict>
-		<key>Properties</key>
-		<dict>
-			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
-			<dict>
-				<key>AAPL,ig-platform-id</key>
-				<data>
-				AAASWQ==
-				</data>
-				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
-				<key>framebuffer-stolenmem</key>
-				<data>
-				AAAwAQ==
-				</data>
-			</dict>
-		</dict>
-		<key>USB</key>
-		<dict>
-			<key>FixOwnership</key>
-			<true/>
-		</dict>
-	</dict>
+```markup
+    <key>Devices</key>
+    <dict>
+        <key>Audio</key>
+        <dict>
+            <key>Inject</key>
+            <integer>1</integer>
+            <key>ResetHDA</key>
+            <true/>
+        </dict>
+        <key>Properties</key>
+        <dict>
+            <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+            <dict>
+                <key>AAPL,ig-platform-id</key>
+                <data>
+                AAASWQ==
+                </data>
+                <key>framebuffer-patch-enable</key>
+                <data>
+                AQAAAA==
+                </data>
+                <key>framebuffer-stolenmem</key>
+                <data>
+                AAAwAQ==
+                </data>
+            </dict>
+        </dict>
+        <key>USB</key>
+        <dict>
+            <key>FixOwnership</key>
+            <true/>
+        </dict>
+    </dict>
 ```
 
 ### Clover Configurator Screenshots
@@ -273,7 +273,7 @@ The two ig-platform-id's we use are as follows:
   * `03001259` when hex-swapped
   * `AwASWQ==` when the hex-swapped version is converted to base64
 
-We also add 2 more properties, _framebuffer-patch-enable_ and _framebuffer-stolenmem_.  The first enables patching via _WhateverGreen.kext,_ and the second sets the min stolen memory to 19MB.
+We also add 2 more properties, _framebuffer-patch-enable_ and _framebuffer-stolenmem_. The first enables patching via _WhateverGreen.kext,_ and the second sets the min stolen memory to 19MB.
 
 ## Disable Drivers
 
@@ -283,7 +283,7 @@ We have nothing to do here.
 
 ### Raw XML
 
-```xml
+```markup
     <key>GUI</key>
     <dict>
         <key>Scan</key>
@@ -337,7 +337,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Raw XML
 
-```xml
+```markup
     <key>KernelAndKextPatches</key>
     <dict>
         <key>KernelPm</key>
@@ -451,7 +451,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Raw XML
 
-```xml
+```markup
     <key>RtVariables</key>
     <dict>
         <key>BooterConfig</key>
@@ -486,7 +486,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 For setting up the SMBIOS info, I use acidanthera's [_macserial_](https://github.com/acidanthera/macserial) application. I wrote a [_python script_](https://github.com/corpnewt/Plist-Tool) that can leverage it as well \(and auto-saves tot he config.plist when selected\). There's plenty of info that's left blank to allow Clover to fill in the blanks; this means that updating Clover will update the info passed, and not require you to also update your config.plist.
 
-For this Kaby Lake example, I chose the _iMac18,1_ SMBIOS - this is done intentionally for compatibility's sake.  There are two main SMBIOS used for Kaby Lake:
+For this Kaby Lake example, I chose the _iMac18,1_ SMBIOS - this is done intentionally for compatibility's sake. There are two main SMBIOS used for Kaby Lake:
 
 * _iMac18,1_ - this is used for computers utilizing the iGPU for displaying.
 * _iMac18,3_ - this is used for computers using a dGPU for displaying, and an iGPU for compute tasks only.
@@ -536,7 +536,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Raw XML
 
-```xml
+```markup
     <key>SystemParameters</key>
     <dict>
         <key>InjectKexts</key>

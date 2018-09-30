@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Haswell Boot CC Section](../.gitbook/assets/image%20%284%29.png)
+![Skylake Boot CC Section](../.gitbook/assets/image%20%284%29.png)
 
 ### Explanation
 
@@ -298,7 +298,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Haswell Gui CC Section](../.gitbook/assets/image%20%2816%29.png)
+![Skylake Gui CC Section](../.gitbook/assets/image%20%2816%29.png)
 
 ### Explanation
 
@@ -428,7 +428,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2817%29.png)
+![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2817%29.png)
 
 ### Explanation
 
