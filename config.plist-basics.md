@@ -50,7 +50,7 @@ These are _boolean_ values.  You can think of them as _on/off_ values.  Unlike t
 
 #### Arrays
 
-```text
+```xml
 <array>
     <string>Bob</string>
     <string>Jim</string>
@@ -62,7 +62,7 @@ This is an unordered list of items.  If we wanted to gather up a collection of n
 
 #### Dictionaries
 
-```text
+```xml
 <dict>
     <key>Name</key>
     <string>Bob</string>
@@ -83,7 +83,7 @@ Let's go over some _before/after_ examples with some pretend _config.plist_ data
 
 In this first example, we're just going to change a boolean value from true to false, or vise versa.  I'll use the _Disabled_ value inside a _KextsToPatch_ entry to make this actually a real-world example.  First, I'll give us the _KextsToPatch_ entry we'll be working with:
 
-```text
+```xml
 <dict>
     <key>Comment</key>
     <string>External icons patch</string>
@@ -104,11 +104,191 @@ In this first example, we're just going to change a boolean value from true to f
 </dict>
 ```
 
-Whew, that might look like a lot up front, but we'll break things down.  First off, I'll explain what this patch is actually for.  Via the information in this patch, Clover will look for the _AppleAHCIPort_ kext and search for 
+Whew, that might look like a lot up front, but we'll break things down.  Firstly, I'll go over what the different keys mean:
 
-```text
-RXh0ZXJuYWw=
+* `Comment` - this is just a comment to describe what the patch is doing.
+* `Disabled` - this is a bit counter-intuitive, but it's a boolean value that determines whether or not this patch is disabled.  If set to `<true/>`, the patch will be disabled, and Clover will ignore it.  If set to `<false/>` the patch is _not_ disabled, and it will be applied.
+* `InfoPlistPatch` - this is a boolean value that tells Clover if we're patching the Info.plist of the kext instead of the binary.
+* `Name` - this is the actual kext we intend to patch.
+* `Find` - this is the base64 data we want to look for in the binary to patch.
+* `Replace` - this is what we will be replacing the `Find` data with (if we find it).
+
+Alright, now I'll explain what this patch is actually for.  Via the information in this patch, Clover will look for the _AppleAHCIPort_ kext and search for `RXh0ZXJuYWw=` (which becomes `External` when we decode the data) and replace it with `SW50ZXJuYWw=` (which becomes `Internal` when we decode it).  The end result is that drives that are hot-pluggable (and normally considered external drives) will be displayed as internal drives and not have the orange icon on the desktop.  This patching happens on the fly, and is non-destructive - meaning that the _AppleAHCIPort_ kext remains untouched on the system.
+
+So - I guess at this point, I should explain how we would change a boolean value to disable this patch.  I mentioned before how the `Disabled` key works - wo we'll change the `<false/>` on the next line to `<true/>` which sets this patch to _disabled_ like so:
+
+```xml
+<dict>
+    <key>Comment</key>
+    <string>External icons patch</string>
+    <key>Disabled</key>
+    <true/>
+    <key>Find</key>
+    <data>
+    RXh0ZXJuYWw=
+    </data>
+    <key>InfoPlistPatch</key>
+    <false/>
+    <key>Name</key>
+    <string>AppleAHCIPort</string>
+    <key>Replace</key>
+    <data>
+    SW50ZXJuYWw=
+    </data>
+</dict>
 ```
 
+Not too scary, right?
 
+#### Adding a New Dict to an Array
 
+This is one that I see quite often that can be a bit overwhelming for new folks.  If you are told to add a new patch to _config.plist -> ACPI -> DSDT -> Patches_, we'd first pop open our _config.plist_ and see what we're working with.
+
+We'll assume for this example that the config looks like so:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>ACPI</key>
+    <dict>
+        <key>DSDT</key>
+        <dict>
+            <key>Fixes</key>
+            <dict>
+                <key>FixHPET</key>
+                <true/>
+                <key>FixIPIC</key>
+                <true/>
+                <key>FixRTC</key>
+                <true/>
+                <key>FixTMR</key>
+                <true/>
+            </dict>
+            <key>Patches</key>
+            <array>
+                <dict>
+                    <key>Comment</key>
+                    <string>change OSID to XSID (to avoid match against _OSI XOSI patch)</string>
+                    <key>Disabled</key>
+                    <false/>
+                    <key>Find</key>
+                    <data>
+                    T1NJRA==
+                    </data>
+                    <key>Replace</key>
+                    <data>
+                    WFNJRA==
+                    </data>
+                </dict>
+                <dict>
+                    <key>Comment</key>
+                    <string>change _OSI to XOSI</string>
+                    <key>Disabled</key>
+                    <false/>
+                    <key>Find</key>
+                    <data>
+                    X09TSQ==
+                    </data>
+                    <key>Replace</key>
+                    <data>
+                    WE9TSQ==
+                    </data>
+                </dict>
+            </array>
+```
+    
+As we look down the config, starting at the top, we can follow that path I outlined before.  We see _ACPI_, and under that _DSDT_.  Then underneath _DSDT_ is _Fixes_ and in-line with that is _Patches_.  We're not concerned with the _Fixes_ section currently, so we'll just ignore that and focus on the _Patches_.
+    
+Firstly, I'll point out that under the `<key>Patches</key>` is an opening array tag (`<array>`) - and then we have 2 dictionaries - each with similar keys to what we worked with in the prior example (_Comment_, _Disabled_, _Find_, _Replace_).  After the dictionaries, we see the closing array tag (`</array>`).  Our goal is to add a new dictionary in between the `<array>` and `</array>` tags while also avoiding slicing up the other existing dictionaries.  The data that we'll be adding looks like so:
+
+```xml
+<dict>
+    <key>Comment</key>
+    <string>change SAT0 to SATA</string>
+    <key>Disabled</key>
+    <false/>
+    <key>Find</key>
+    <data>
+    U0FUMA==
+    </data>
+    <key>Replace</key>
+    <data>
+    U0FUQQ==
+    </data>
+</dict>
+```
+
+Like I mentioned prior, arrays are unordered - that means it doesn't matter whether we put our new dictionary before the existing 2, after them, or in between them.  I'm going to add it to the end though - just above that last `</array>` tag like so:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>ACPI</key>
+    <dict>
+        <key>DSDT</key>
+        <dict>
+            <key>Fixes</key>
+            <dict>
+                <key>FixHPET</key>
+                <true/>
+                <key>FixIPIC</key>
+                <true/>
+                <key>FixRTC</key>
+                <true/>
+                <key>FixTMR</key>
+                <true/>
+            </dict>
+            <key>Patches</key>
+            <array>
+                <dict>
+                    <key>Comment</key>
+                    <string>change OSID to XSID (to avoid match against _OSI XOSI patch)</string>
+                    <key>Disabled</key>
+                    <false/>
+                    <key>Find</key>
+                    <data>
+                    T1NJRA==
+                    </data>
+                    <key>Replace</key>
+                    <data>
+                    WFNJRA==
+                    </data>
+                </dict>
+                <dict>
+                    <key>Comment</key>
+                    <string>change _OSI to XOSI</string>
+                    <key>Disabled</key>
+                    <false/>
+                    <key>Find</key>
+                    <data>
+                    X09TSQ==
+                    </data>
+                    <key>Replace</key>
+                    <data>
+                    WE9TSQ==
+                    </data>
+                </dict>
+                <dict>
+                    <key>Comment</key>
+                    <string>change SAT0 to SATA</string>
+                    <key>Disabled</key>
+                    <false/>
+                    <key>Find</key>
+                    <data>
+                    U0FUMA==
+                    </data>
+                    <key>Replace</key>
+                    <data>
+                    U0FUQQ==
+                    </data>
+                </dict>
+            </array>
+```
+
+#### More Examples
+
+I'll try to keep my ears open for more plist editing examples that people have issues with, and add them as needed.
