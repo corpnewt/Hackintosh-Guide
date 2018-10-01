@@ -26,7 +26,7 @@ For Audio - you'll want to grab /u/vit9696's [_AppleALC.kext_](https://github.co
 
 For GPUs - you should grab [_WhateverGreen.kext_](https://github.com/acidanthera/WhateverGreen/releases) and the companion [_Lilu.kext_](https://github.com/vit9696/Lilu/releases) - this has the functionality of _IntelGraphicsFixup_, _NvidiaGraphicsFixup_, _CoreDisplayFixup_, and _Shiki_ all rolled into it.  Prior, all of these kexts were separate - but since many of them share resources, they've been combined.
 
-### WiFi and BlueTooth
+### WiFi and Bluetooth
 
 Apple is pretty minimal with their WiFi support, so I'll only cover the two main chipsets I'm familiar with.  I've used a BCM94360CD + PCIe adapter, and BCM94352HMB/BCM94352Z in my Hackintoshes.  The BCM94360CD worked OOB with no extras as it's a native card.  For the BCM94352 flavors, I've been using [_AirportBrcmFixup.kext_ ](https://github.com/acidanthera/AirportBrcmFixup)and the companion [_Lilu.kext_](https://github.com/vit9696/Lilu/releases) for WiFi setup and _BrcmBluetoothInjector.kext_ \(on 10.13.6+\) or _BrcmPatchRAM2.kext_ alongside _BrcmFirmwareData.kext_ - all of the Brcm\* kexts are from RehabMan's [_OS-X-BrcmPatchRAM_](https://github.com/RehabMan/OS-X-BrcmPatchRAM) repo.
 
