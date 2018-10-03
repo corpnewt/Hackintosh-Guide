@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2821%29.png)
+![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2827%29.png)
 
-![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2816%29.png)
+![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2821%29.png)
 
 ### Explanation
 
@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Boot CC Section](../.gitbook/assets/image%20%285%29.png)
+![Coffee Lake Boot CC Section](../.gitbook/assets/image%20%287%29.png)
 
 ### Explanation
 
@@ -240,7 +240,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%281%29.png)
 
-![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2814%29.png)
+![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2819%29.png)
 
 ### Explanation
 
@@ -272,8 +272,8 @@ The two ig-platform-id's we use are as follows:
 * `0x3E920003` - this is used when the iGPU is only used for compute tasks, and doesn't drive a display
   * `0300923E` when hex-swapped
   * `AwCSPg==` when the hex-swapped version is converted to base64
-  
-Worth noting that for 10.12 -> 10.13.5, you would need to fake the iGPU to the same values in the Kaby Lake guide, as this was before native Coffee Lake iGPU showed up.
+
+Worth noting that for 10.12 -&gt; 10.13.5, you would need to fake the iGPU to the same values in the Kaby Lake guide, as this was before native Coffee Lake iGPU showed up.
 
 We also add 2 more properties, _framebuffer-patch-enable_ and _framebuffer-stolenmem_. The first enables patching via _WhateverGreen.kext,_ and the second sets the min stolen memory to 19MB.
 
@@ -300,7 +300,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2818%29.png)
+![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2823%29.png)
 
 ### Explanation
 
@@ -430,7 +430,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2819%29.png)
+![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2824%29.png)
 
 ### Explanation
 
@@ -480,9 +480,9 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%284%29.png)
+![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2825%29.png)
 
-![Coffee Lake SMBIOS CC Section](../.gitbook/assets/image%20%2815%29.png)
+![Coffee Lake SMBIOS CC Section](../.gitbook/assets/image%20%285%29.png)
 
 ### Explanation
 
@@ -548,7 +548,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2810%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2813%29.png)
 
 ### Explanation
 
