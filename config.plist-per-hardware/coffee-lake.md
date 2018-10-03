@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2827%29.png)
+![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2828%29.png)
 
-![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2821%29.png)
+![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2822%29.png)
 
 ### Explanation
 
@@ -240,7 +240,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%281%29.png)
 
-![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2819%29.png)
+![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2820%29.png)
 
 ### Explanation
 
@@ -300,7 +300,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2823%29.png)
+![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2824%29.png)
 
 ### Explanation
 
@@ -430,7 +430,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2824%29.png)
+![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2825%29.png)
 
 ### Explanation
 
@@ -480,7 +480,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2825%29.png)
+![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2826%29.png)
 
 ![Coffee Lake SMBIOS CC Section](../.gitbook/assets/image%20%285%29.png)
 

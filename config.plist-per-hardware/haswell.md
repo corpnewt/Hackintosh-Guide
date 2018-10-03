@@ -230,7 +230,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Haswell Devices CC Section - iGPU](../.gitbook/assets/image%20%2816%29.png)
+![Haswell Devices CC Section - iGPU](../.gitbook/assets/image%20%2817%29.png)
 
 ![Haswell Devices CC Section - iGPU \(Connectorless\) + dGPU](../.gitbook/assets/image%20%2810%29.png)
 
@@ -288,7 +288,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Haswell Gui CC Section](../.gitbook/assets/image%20%2823%29.png)
+![Haswell Gui CC Section](../.gitbook/assets/image%20%2824%29.png)
 
 ### Explanation
 
@@ -418,7 +418,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2824%29.png)
+![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2825%29.png)
 
 ### Explanation
 
@@ -470,7 +470,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ![Haswell Rt Variables CC Section](../.gitbook/assets/image%20%289%29.png)
 
-![Haswell SMBIOS CC Section](../.gitbook/assets/image%20%2822%29.png)
+![Haswell SMBIOS CC Section](../.gitbook/assets/image%20%2814%29.png)
 
 ### Explanation
 
