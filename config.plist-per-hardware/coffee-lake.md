@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2832%29.png)
+![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2835%29.png)
 
-![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2826%29.png)
+![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2829%29.png)
 
 ### Explanation
 
@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Boot CC Section](../.gitbook/assets/image%20%288%29.png)
+![Coffee Lake Boot CC Section](../.gitbook/assets/image%20%2810%29.png)
 
 ### Explanation
 
@@ -238,9 +238,11 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%281%29.png)
+![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%286%29.png)
 
-![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2824%29.png)
+![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2823%29.png)
+
+![Device-Id fake for i3-8100 UHD 630](../.gitbook/assets/image%20%283%29.png)
 
 ### Explanation
 
@@ -277,6 +279,43 @@ Worth noting that for 10.12 -&gt; 10.13.5, you would need to fake the iGPU to th
 
 We also add 2 more properties, _framebuffer-patch-enable_ and _framebuffer-stolenmem_. The first enables patching via _WhateverGreen.kext,_ and the second sets the min stolen memory to 19MB.
 
+I added another screenshot as well that shows a `device-id` fake for the i3-8100's UHD 630.  This has a different device id than the UHD 630 found on the 8700k, for instance \(`3e918086` vs `3e928086` \).
+
+For this - we follow a similar procedure as our above ig-platform-id hex swapping - but this time, we only work with the first two pairs of hex bytes.  If we think of our device id as `0xAABB0000`, our swapped version would look like `0xBBAA0000`.  We don't do anything with the last 2 pairs of hex bytes.
+
+The device-id fake is setup like so:
+
+* `0x3e920000` - this is the device id for the UHD 630 found on an 8700k
+  * `923e0000` when hex swapped
+  * `kj4AAA==` when the hex-swapped version is converted to base64
+
+If using the raw xml, your Properties would look like this \(make sure to still use the appropriate ig-platform-id for your setup\):
+
+```markup
+        <key>Properties</key>
+        <dict>
+            <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+            <dict>
+                <key>device-id</key>
+                <data>
+                kj4AAA==
+                </data>
+                <key>AAPL,ig-platform-id</key>
+                <data>
+                BwCbPg==
+                </data>
+                <key>framebuffer-patch-enable</key>
+                <data>
+                AQAAAA==
+                </data>
+                <key>framebuffer-stolenmem</key>
+                <data>
+                AAAwAQ==
+                </data>
+            </dict>
+        </dict>
+```
+
 ## Disable Drivers
 
 We have nothing to do here.
@@ -300,7 +339,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2828%29.png)
+![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2831%29.png)
 
 ### Explanation
 
@@ -430,7 +469,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2829%29.png)
+![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2832%29.png)
 
 ### Explanation
 
@@ -480,9 +519,9 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2830%29.png)
+![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2833%29.png)
 
-![Coffee Lake SMBIOS CC Section](../.gitbook/assets/image%20%285%29.png)
+![Coffee Lake SMBIOS CC Section](../.gitbook/assets/image%20%287%29.png)
 
 ### Explanation
 
@@ -548,7 +587,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2815%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2817%29.png)
 
 ### Explanation
 
