@@ -603,5 +603,5 @@ We set it to `Yes` to make sure that all the kexts we added before get injected 
 
 ## Saving
 
-At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://pastebin.com/0Jum8LiW) too.
+At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://pastebin.com/XH7Q9XPu) too.
 
