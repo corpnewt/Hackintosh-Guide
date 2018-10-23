@@ -4,7 +4,7 @@
 
 _VirtualSMC.kext_ is a requirement - it emulates the SMC chip found on real macs, and convinces the OS that _yes, this is a real Mac_. Without it, no Hackintosh :\(
 
-All of the following kexts are available on [_this repo_ ](https://1drv.ms/f/s!AiP7m5LaOED-mo9XA4Ml-69cwAsikQ)courtesy of Goldfish64.  Each kext is auto-built whenever a new commit is made.  If you prefer to build them yourself, you can utilize my [_Lilu And Friends_ ](https://github.com/corpnewt/Lilu-and-Friends)script.
+All of the following kexts are available on [_this repo_ ](https://1drv.ms/f/s!AiP7m5LaOED-m-J8-MLJGnOgAqnjGw)courtesy of Goldfish64.  Each kext is auto-built whenever a new commit is made.  If you prefer to build them yourself, you can utilize my [_Lilu And Friends_ ](https://github.com/corpnewt/Lilu-and-Friends)script.
 
 ### Ethernet
 
