@@ -288,7 +288,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Haswell Gui CC Section](../.gitbook/assets/image%20%2837%29.png)
+![Haswell Gui CC Section](../.gitbook/assets/image%20%2838%29.png)
 
 ### Explanation
 
@@ -418,7 +418,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2838%29.png)
+![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2839%29.png)
 
 ### Explanation
 

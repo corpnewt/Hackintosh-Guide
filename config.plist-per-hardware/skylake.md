@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2842%29.png)
+![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2844%29.png)
 
-![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2835%29.png)
+![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2836%29.png)
 
 ### Explanation
 
@@ -238,7 +238,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2841%29.png)
+![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2842%29.png)
 
 ![Skylake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image.png)
 
@@ -298,7 +298,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Skylake Gui CC Section](../.gitbook/assets/image%20%2837%29.png)
+![Skylake Gui CC Section](../.gitbook/assets/image%20%2838%29.png)
 
 ### Explanation
 
@@ -428,7 +428,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2838%29.png)
+![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2839%29.png)
 
 ### Explanation
 

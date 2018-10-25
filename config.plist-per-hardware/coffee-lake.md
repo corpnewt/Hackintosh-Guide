@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2842%29.png)
+![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2844%29.png)
 
-![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2835%29.png)
+![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2836%29.png)
 
 ### Explanation
 
@@ -238,7 +238,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%2822%29.png)
+![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%2843%29.png)
 
 ![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2828%29.png)
 
@@ -268,9 +268,9 @@ If we think of our ig-plat as `0xAABBCCDD`, our swapped version would look like 
 
 The two ig-platform-id's we use are as follows:
 
-* `0x3EA50000` - this is used when the iGPU is used to drive a display
-  * `0000A53E` when hex-swapped
-  * `AAClPg==` when the hex-swapped version is converted to base64
+* `0x3E9B0007` - this is used when the iGPU is used to drive a display
+  * `07009B3E` when hex-swapped
+  * `BwCbPg==` when the hex-swapped version is converted to base64
 * `0x3E920003` - this is used when the iGPU is only used for compute tasks, and doesn't drive a display
   * `0300923E` when hex-swapped
   * `AwCSPg==` when the hex-swapped version is converted to base64
@@ -302,7 +302,7 @@ If using the raw xml, your Properties would look like this \(make sure to still 
                 </data>
                 <key>AAPL,ig-platform-id</key>
                 <data>
-                AAClPg==
+                BwCbPg==
                 </data>
                 <key>framebuffer-patch-enable</key>
                 <data>
@@ -328,7 +328,7 @@ I saw the issue in [a reddit post](https://www.reddit.com/r/hackintosh/comments/
 
 I opened up IORegistryExplorer and in the search bar typed `IGPU` \(this is sometimes named `GFX0` in ACPI, but Lilu + WhateverGreen should rename it properly\) and got the following screen:
 
-![Search for IGPU in IOReg](../.gitbook/assets/image%20%2831%29.png)
+![Search for IGPU in IOReg](../.gitbook/assets/image%20%2846%29.png)
 
   
 Once we've located `IGPU` in IOReg, we can clear our search - this reveals all the info around the `IGPU` section while keeping our place:
@@ -353,7 +353,7 @@ Since my incorrect port was located at AppleIntelFramebuffer@2, this is port `2`
 
 I replaced the `conX` in both patches with `con2` to reflect the port that I am changing, then set the values as listed above.
 
-![](../.gitbook/assets/image%20%2812%29.png)
+![](../.gitbook/assets/image%20%2833%29.png)
 
 ```markup
 		<key>Properties</key>
@@ -362,7 +362,7 @@ I replaced the `conX` in both patches with `con2` to reflect the port that I am 
 			<dict>
 				<key>AAPL,ig-platform-id</key>
 				<data>
-				AAClPg==
+				BwCbPg==
 				</data>
 				<key>device-id</key>
 				<data>
@@ -388,7 +388,7 @@ I replaced the `conX` in both patches with `con2` to reflect the port that I am 
 		</dict>
 ```
 
-![IOReg -&amp;gt; IGPU -&amp;gt; AppleIntelFramebuffer@2 After Patching](../.gitbook/assets/image%20%2839%29.png)
+![IOReg -&amp;gt; IGPU -&amp;gt; AppleIntelFramebuffer@2 After Patching](../.gitbook/assets/image%20%2840%29.png)
 
 This also enabled HDMI audio for me as well.
 
@@ -417,7 +417,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2837%29.png)
+![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2838%29.png)
 
 ### Explanation
 
@@ -547,7 +547,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2838%29.png)
+![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2839%29.png)
 
 ### Explanation
 
@@ -597,7 +597,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2840%29.png)
+![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2841%29.png)
 
 ![Coffee Lake SMBIOS CC Section](../.gitbook/assets/image%20%289%29.png)
 
