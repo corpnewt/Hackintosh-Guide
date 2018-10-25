@@ -484,7 +484,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Explanation
 
-For setting up the SMBIOS info, I use acidanthera's [_macserial_](https://github.com/acidanthera/macserial) application. I wrote a [_python script_](https://github.com/corpnewt/Plist-Tool) that can leverage it as well \(and auto-saves tot he config.plist when selected\). There's plenty of info that's left blank to allow Clover to fill in the blanks; this means that updating Clover will update the info passed, and not require you to also update your config.plist.
+For setting up the SMBIOS info, I use acidanthera's [_macserial_](https://github.com/acidanthera/macserial) application. I wrote a [_python script_](https://github.com/corpnewt/Plist-Tool) that can leverage it as well \(and auto-saves to the config.plist when selected\). There's plenty of info that's left blank to allow Clover to fill in the blanks; this means that updating Clover will update the info passed, and not require you to also update your config.plist.
 
 For this Skylake example, I chose the _iMac17,1_ SMBIOS.
 
