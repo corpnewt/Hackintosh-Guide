@@ -4,15 +4,15 @@
 
 Fire up your Clover install package. On the 2nd page of the installer **make sure to select your USB as the destination**. We also want to **Customize** the installation - as the defaults are pretty lackluster.
 
-![2nd Page of the Clover Installer - Note the &quot;Customize&quot; button in the bottom left](.gitbook/assets/image%20%2817%29.png)
+![2nd Page of the Clover Installer - Note the &quot;Customize&quot; button in the bottom left](.gitbook/assets/image%20%2818%29.png)
 
 The _usual_ options you want to check in the Customize menu are shown in the following screenshots with an explanation of each after:
 
 ![UEFI Booting Only and Install in the ESP](.gitbook/assets/image%20%2811%29.png)
 
-![ApfsDriverLoader and AptioMemoryFix under Drivers64UEFI](.gitbook/assets/image%20%2820%29.png)
+![ApfsDriverLoader and AptioMemoryFix under Drivers64UEFI](.gitbook/assets/image%20%2821%29.png)
 
-![HFSPlus under Drivers64UEFI - although VboxHfs-64 works as well](.gitbook/assets/image%20%2830%29.png)
+![HFSPlus under Drivers64UEFI - although VboxHfs-64 works as well](.gitbook/assets/image%20%2832%29.png)
 
 * _Install Clover for UEFI booting only_
 * _Install Clover to the ESP_
