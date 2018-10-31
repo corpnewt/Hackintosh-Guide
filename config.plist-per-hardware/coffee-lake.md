@@ -279,9 +279,9 @@ Worth noting that for 10.12 -&gt; 10.13.5, you would need to fake the iGPU to th
 
 We also add 2 more properties, _framebuffer-patch-enable_ and _framebuffer-stolenmem_. The first enables patching via _WhateverGreen.kext,_ and the second sets the min stolen memory to 19MB.
 
-I added another screenshot as well that shows a `device-id` fake for the i3-8100's UHD 630.  This has a different device id than the UHD 630 found on the 8700k, for instance \(`3e918086` vs `3e928086` \).
+I added another screenshot as well that shows a `device-id` fake for the i3-8100's UHD 630. This has a different device id than the UHD 630 found on the 8700k, for instance \(`3e918086` vs `3e928086` \).
 
-For this - we follow a similar procedure as our above ig-platform-id hex swapping - but this time, we only work with the first two pairs of hex bytes.  If we think of our device id as `0xAABB0000`, our swapped version would look like `0xBBAA0000`.  We don't do anything with the last 2 pairs of hex bytes.
+For this - we follow a similar procedure as our above ig-platform-id hex swapping - but this time, we only work with the first two pairs of hex bytes. If we think of our device id as `0xAABB0000`, our swapped version would look like `0xBBAA0000`. We don't do anything with the last 2 pairs of hex bytes.
 
 The device-id fake is setup like so:
 
@@ -318,11 +318,11 @@ If using the raw xml, your Properties would look like this \(make sure to still 
 
 ### Pink/Purple Tint?
 
-I've seen a couple users report a pink tint when using HDMI with the UHD 630 iGPU.  I did some experimenting on my own system and was able to work around it a couple different ways.
+I've seen a couple users report a pink tint when using HDMI with the UHD 630 iGPU. I did some experimenting on my own system and was able to work around it a couple different ways.
 
 #### Force RGB
 
-I saw the issue in [a reddit post](https://www.reddit.com/r/hackintosh/comments/9pufo8/8700k_igpu_has_a_purple_tint_on_mojave/), and the solution was to apply a custom override for your display to force it to use RGB instead of YCbCr outlined [here](https://www.mathewinkson.com/2013/03/force-rgb-mode-in-mac-os-x-to-fix-the-picture-quality-of-an-external-monitor).  I wrote [a script](https://github.com/corpnewt/ForceRGB) that wraps around this method and auto-applies the override when it's completed.  This worked fine for me, but didn't feel like a _real fix_.  Which lead me to dive a bit deeper...
+I saw the issue in [a reddit post](https://www.reddit.com/r/hackintosh/comments/9pufo8/8700k_igpu_has_a_purple_tint_on_mojave/), and the solution was to apply a custom override for your display to force it to use RGB instead of YCbCr outlined [here](https://www.mathewinkson.com/2013/03/force-rgb-mode-in-mac-os-x-to-fix-the-picture-quality-of-an-external-monitor). I wrote [a script](https://github.com/corpnewt/ForceRGB) that wraps around this method and auto-applies the override when it's completed. This worked fine for me, but didn't feel like a _real fix_. Which lead me to dive a bit deeper...
 
 #### Connector Types In IOReg
 
@@ -330,13 +330,11 @@ I opened up IORegistryExplorer and in the search bar typed `IGPU` \(this is some
 
 ![Search for IGPU in IOReg](../.gitbook/assets/image%20%2851%29.png)
 
-  
 Once we've located `IGPU` in IOReg, we can clear our search - this reveals all the info around the `IGPU` section while keeping our place:
 
 ![IGPU Selected With Search Cleared](../.gitbook/assets/image%20%2826%29.png)
 
-  
-As you can see in the above screenshot, I had a few different AppleIntelFramebuffer connections listed.  I'm looking for the one that's specifically driving my display - which has the AppleDisplay property.  In my case, this was AppleIntelFramebuffer@1.  With that selected on the left pane, you can find the `connector-type` property, which was originally set to `<00 04 00 00>` in my case.  The connector type can have a few different values:
+As you can see in the above screenshot, I had a few different AppleIntelFramebuffer connections listed. I'm looking for the one that's specifically driving my display - which has the AppleDisplay property. In my case, this was AppleIntelFramebuffer@1. With that selected on the left pane, you can find the `connector-type` property, which was originally set to `<00 04 00 00>` in my case. The connector type can have a few different values:
 
 * `<00 04 00 00>` - this is DisplayPort
 * `<00 08 00 00>` - this is HDMI
@@ -346,7 +344,7 @@ As you can see in the above screenshot, I had a few different AppleIntelFramebuf
 
 What I noticed in my case was that my HDMI port was listed as a DisplayPort - so I was able to use WhateverGreen's patching abilities to change the connector-type.
 
-Since my incorrect port was located at AppleIntelFramebuffer@1, this is port `1`.  I needed to enable the port patch in Properties, and then set the connector type to HDMI.  I used the following Properties entries for that:
+Since my incorrect port was located at AppleIntelFramebuffer@1, this is port `1`. I needed to enable the port patch in Properties, and then set the connector type to HDMI. I used the following Properties entries for that:
 
 * `framebuffer-conX-enable = 01000000`
 * `framebuffer-conX-type = 00080000`
@@ -356,36 +354,36 @@ I replaced the `conX` in both patches with `con1` to reflect the port that I am 
 ![](../.gitbook/assets/image%20%2829%29.png)
 
 ```markup
-		<key>Properties</key>
-		<dict>
-			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
-			<dict>
-				<key>AAPL,ig-platform-id</key>
-				<data>
-				BwCbPg==
-				</data>
-				<key>device-id</key>
-				<data>
-				kj4AAA==
-				</data>
-				<key>framebuffer-con1-enable</key>
-				<data>
-				AQAAAA==
-				</data>
-				<key>framebuffer-con1-type</key>
-				<data>
-				AAgAAA==
-				</data>
-				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
-				<key>framebuffer-stolenmem</key>
-				<data>
-				AAAwAQ==
-				</data>
-			</dict>
-		</dict>
+        <key>Properties</key>
+        <dict>
+            <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+            <dict>
+                <key>AAPL,ig-platform-id</key>
+                <data>
+                BwCbPg==
+                </data>
+                <key>device-id</key>
+                <data>
+                kj4AAA==
+                </data>
+                <key>framebuffer-con1-enable</key>
+                <data>
+                AQAAAA==
+                </data>
+                <key>framebuffer-con1-type</key>
+                <data>
+                AAgAAA==
+                </data>
+                <key>framebuffer-patch-enable</key>
+                <data>
+                AQAAAA==
+                </data>
+                <key>framebuffer-stolenmem</key>
+                <data>
+                AAAwAQ==
+                </data>
+            </dict>
+        </dict>
 ```
 
 ![IOReg -&amp;gt; IGPU -&amp;gt; AppleIntelFramebuffer@1 After Patching](../.gitbook/assets/image%20%286%29.png)

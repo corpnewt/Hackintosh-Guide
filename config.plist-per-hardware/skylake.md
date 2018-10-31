@@ -201,39 +201,39 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 ### Raw XML
 
 ```markup
-	<key>Devices</key>
-	<dict>
-		<key>Audio</key>
-		<dict>
-			<key>Inject</key>
-			<integer>1</integer>
-			<key>ResetHDA</key>
-			<true/>
-		</dict>
-		<key>Properties</key>
-		<dict>
-			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
-			<dict>
-				<key>AAPL,ig-platform-id</key>
-				<data>
-				AAASGQ==
-				</data>
-				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
-				<key>framebuffer-stolenmem</key>
-				<data>
-				AAAwAQ==
-				</data>
-			</dict>
-		</dict>
-		<key>USB</key>
-		<dict>
-			<key>FixOwnership</key>
-			<true/>
-		</dict>
-	</dict>
+    <key>Devices</key>
+    <dict>
+        <key>Audio</key>
+        <dict>
+            <key>Inject</key>
+            <integer>1</integer>
+            <key>ResetHDA</key>
+            <true/>
+        </dict>
+        <key>Properties</key>
+        <dict>
+            <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+            <dict>
+                <key>AAPL,ig-platform-id</key>
+                <data>
+                AAASGQ==
+                </data>
+                <key>framebuffer-patch-enable</key>
+                <data>
+                AQAAAA==
+                </data>
+                <key>framebuffer-stolenmem</key>
+                <data>
+                AAAwAQ==
+                </data>
+            </dict>
+        </dict>
+        <key>USB</key>
+        <dict>
+            <key>FixOwnership</key>
+            <true/>
+        </dict>
+    </dict>
 ```
 
 ### Clover Configurator Screenshots
@@ -273,7 +273,7 @@ The two ig-platform-id's we use are as follows:
   * `01001219` when hex-swapped
   * `AQASGQ==` when the hex-swapped version is converted to base64
 
-We also add 2 more properties, _framebuffer-patch-enable_ and _framebuffer-stolenmem_.  The first enables patching via _WhateverGreen.kext,_ and the second sets the min stolen memory to 19MB.
+We also add 2 more properties, _framebuffer-patch-enable_ and _framebuffer-stolenmem_. The first enables patching via _WhateverGreen.kext,_ and the second sets the min stolen memory to 19MB.
 
 ## Disable Drivers
 
