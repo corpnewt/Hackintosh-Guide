@@ -532,6 +532,8 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
     <dict>
         <key>InjectKexts</key>
         <string>Yes</string>
+        <key>InjectSystemID</key>
+        <true/>
     </dict>
 ```
 
@@ -550,6 +552,10 @@ This setting has 3 modes:
 * `Detect` - this has Clover inject kexts only if _FakeSMC.kext_ is not in the kext cache.
 
 We set it to `Yes` to make sure that all the kexts we added before get injected properly.
+
+#### InjectSystemID
+
+This setting tells clover to set the SmUUID as the `system-id` at boot - which is important for iMessage and such.
 
 ## Saving
 
