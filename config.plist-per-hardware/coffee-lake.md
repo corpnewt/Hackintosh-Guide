@@ -454,10 +454,10 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ```markup
     <key>Graphics</key>
-	<dict>
-		<key>Inject</key>
-		<false/>
-	</dict>
+    <dict>
+        <key>Inject</key>
+        <false/>
+    </dict>
 ```
 
 ## Kernel And Kext Patches
