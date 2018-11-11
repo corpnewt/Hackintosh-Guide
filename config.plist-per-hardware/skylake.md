@@ -565,5 +565,5 @@ This setting tells clover to set the SmUUID as the `system-id` at boot - which i
 
 ## Saving
 
-At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://pastebin.com/qrEYjQXk) too.
+At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://github.com/corpnewt/Hackintosh-Guide/blob/master/Configs/Skylake/config.plist) too.
 
