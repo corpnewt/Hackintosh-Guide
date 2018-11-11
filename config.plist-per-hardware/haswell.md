@@ -321,7 +321,17 @@ If you want to test out a new theme \(and I suggest you look at [_clover-next-bl
 
 ## Graphics
 
-In the past, we'd setup the iGPU here, but since we already did that via Properties in the _Devices_ section, we have nothing to do here.
+In the past, we'd setup the iGPU here, but since we already did that via Properties in the _Devices_ section, we have nothing to really configure here.  **NOTE**:  When Clover detects an Intel iGPU, it _automatically_ enables Intel Injection if the Graphics section doesn't exist in the config.plist.  To bypass this, you can explicitly disable injection using the raw XML below, or by clicking the "Inject Intel" button once to check it, and once to uncheck it in CC.
+
+### Raw XML
+
+```markup
+    <key>Graphics</key>
+    <dict>
+        <key>Inject</key>
+        <false/>
+    </dict>
+```
 
 ## Kernel And Kext Patches
 
