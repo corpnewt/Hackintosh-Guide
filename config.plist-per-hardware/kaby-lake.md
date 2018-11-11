@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Kaby Lake Acpi CC Section 1](../.gitbook/assets/image%20%2849%29.png)
+![Kaby Lake Acpi CC Section 1](../.gitbook/assets/image%20%2853%29.png)
 
-![Kaby Lake Acpi CC Section 2](../.gitbook/assets/image%20%2841%29.png)
+![Kaby Lake Acpi CC Section 2](../.gitbook/assets/image%20%2844%29.png)
 
 ### Explanation
 
@@ -240,7 +240,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ![Kaby Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%281%29.png)
 
-![Kaby Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2839%29.png)
+![Kaby Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2842%29.png)
 
 ### Explanation
 
@@ -298,7 +298,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Kaby Lake Gui CC Section](../.gitbook/assets/image%20%2843%29.png)
+![Kaby Lake Gui CC Section](../.gitbook/assets/image%20%2847%29.png)
 
 ### Explanation
 
@@ -428,7 +428,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Kaby Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2844%29.png)
+![Kaby Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2848%29.png)
 
 ### Explanation
 
@@ -480,7 +480,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ![Kaby Lake RtVariables CC Section](../.gitbook/assets/image%20%2818%29.png)
 
-![Kaby Lake SMBIOS CC Section](../.gitbook/assets/image%20%2835%29.png)
+![Kaby Lake SMBIOS CC Section](../.gitbook/assets/image%20%2837%29.png)
 
 ### Explanation
 
@@ -548,7 +548,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2822%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2841%29.png)
 
 ### Explanation
 
