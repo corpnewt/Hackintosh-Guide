@@ -515,10 +515,30 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
                 <key>Comment</key>
                 <string>Port limit increase (PMHeart)</string>
                 <key>Disabled</key>
-                <false/>
+                <true/>
                 <key>Find</key>
                 <data>
                 g/sPD4MDBQAA
+                </data>
+                <key>InfoPlistPatch</key>
+                <false/>
+                <key>MatchOS</key>
+                <string>10.14.0</string>
+                <key>Name</key>
+                <string>com.apple.driver.usb.AppleUSBXHCI</string>
+                <key>Replace</key>
+                <data>
+                g/sPkJCQkJCQ
+                </data>
+            </dict>
+            <dict>
+                <key>Comment</key>
+                <string>Port limit increase (Ricky)</string>
+                <key>Disabled</key>
+                <false/>
+                <key>Find</key>
+                <data>
+                g/sPD4OPBAAA
                 </data>
                 <key>InfoPlistPatch</key>
                 <false/>
