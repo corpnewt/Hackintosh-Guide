@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2853%29.png)
+![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%2857%29.png)
 
-![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2844%29.png)
+![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2847%29.png)
 
 ### Explanation
 
@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Boot CC Section](../.gitbook/assets/image%20%2814%29.png)
+![Coffee Lake Boot CC Section](../.gitbook/assets/image%20%2815%29.png)
 
 ### Explanation
 
@@ -238,9 +238,9 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%2852%29.png)
+![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%2856%29.png)
 
-![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2835%29.png)
+![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2836%29.png)
 
 ![Device-Id fake for i3-8100 UHD 630](../.gitbook/assets/image%20%285%29.png)
 
@@ -328,11 +328,11 @@ I saw the issue in [a reddit post](https://www.reddit.com/r/hackintosh/comments/
 
 I opened up IORegistryExplorer and in the search bar typed `IGPU` \(this is sometimes named `GFX0` in ACPI, but Lilu + WhateverGreen should rename it properly\) and got the following screen:
 
-![Search for IGPU in IOReg](../.gitbook/assets/image%20%2855%29.png)
+![Search for IGPU in IOReg](../.gitbook/assets/image%20%2859%29.png)
 
 Once we've located `IGPU` in IOReg, we can clear our search - this reveals all the info around the `IGPU` section while keeping our place:
 
-![IGPU Selected With Search Cleared](../.gitbook/assets/image%20%2827%29.png)
+![IGPU Selected With Search Cleared](../.gitbook/assets/image%20%2828%29.png)
 
 As you can see in the above screenshot, I had a few different AppleIntelFramebuffer connections listed. I'm looking for the one that's specifically driving my display - which has the AppleDisplay property. In my case, this was AppleIntelFramebuffer@1. With that selected on the left pane, you can find the `connector-type` property, which was originally set to `<00 04 00 00>` in my case. The connector type can have a few different values:
 
@@ -351,7 +351,7 @@ Since my incorrect port was located at AppleIntelFramebuffer@1, this is port `1`
 
 I replaced the `conX` in both patches with `con1` to reflect the port that I am changing, then set the values as listed above.
 
-![](../.gitbook/assets/image%20%2830%29.png)
+![](../.gitbook/assets/image%20%2831%29.png)
 
 ```markup
         <key>Properties</key>
@@ -390,7 +390,7 @@ I replaced the `conX` in both patches with `con1` to reflect the port that I am 
 
 This also enabled HDMI audio for me as well.
 
-![](../.gitbook/assets/image%20%2826%29.png)
+![](../.gitbook/assets/image%20%2827%29.png)
 
 ## Disable Drivers
 
@@ -415,7 +415,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2847%29.png)
+![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2850%29.png)
 
 ### Explanation
 
@@ -448,7 +448,7 @@ If you want to test out a new theme \(and I suggest you look at [_clover-next-bl
 
 ## Graphics
 
-In the past, we'd setup the iGPU here, but since we already did that via Properties in the _Devices_ section, we have nothing to really configure here.  **NOTE**:  When Clover detects an Intel iGPU, it _automatically_ enables Intel Injection if the Graphics section doesn't exist in the config.plist.  To bypass this, you can explicitly disable injection using the raw XML below, or by clicking the "Inject Intel" button once to check it, and once to uncheck it in CC.
+In the past, we'd setup the iGPU here, but since we already did that via Properties in the _Devices_ section, we have nothing to really configure here. **NOTE**: When Clover detects an Intel iGPU, it _automatically_ enables Intel Injection if the Graphics section doesn't exist in the config.plist. To bypass this, you can explicitly disable injection using the raw XML below, or by clicking the "Inject Intel" button once to check it, and once to uncheck it in CC.
 
 ### Raw XML
 
@@ -555,7 +555,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2848%29.png)
+![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2855%29.png)
 
 ### Explanation
 
@@ -605,7 +605,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2850%29.png)
+![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2853%29.png)
 
 ![Coffee Lake SMBIOS CC Section](../.gitbook/assets/image%20%2810%29.png)
 
@@ -675,7 +675,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2823%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2824%29.png)
 
 ### Explanation
 

@@ -110,7 +110,7 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ![Haswell Acpi CC Section 1](../.gitbook/assets/image%20%287%29.png)
 
-![Haswell Acpi CC Section 2](../.gitbook/assets/image%20%2815%29.png)
+![Haswell Acpi CC Section 2](../.gitbook/assets/image%20%2816%29.png)
 
 ### Explanation
 
@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Haswell Boot CC Section](../.gitbook/assets/image%20%2814%29.png)
+![Haswell Boot CC Section](../.gitbook/assets/image%20%2815%29.png)
 
 ### Explanation
 
@@ -230,9 +230,9 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Haswell Devices CC Section - iGPU](../.gitbook/assets/image%20%2834%29.png)
+![Haswell Devices CC Section - iGPU](../.gitbook/assets/image%20%2835%29.png)
 
-![Haswell Devices CC Section - iGPU \(Connectorless\) + dGPU](../.gitbook/assets/image%20%2817%29.png)
+![Haswell Devices CC Section - iGPU \(Connectorless\) + dGPU](../.gitbook/assets/image%20%2818%29.png)
 
 ### Explanation
 
@@ -288,7 +288,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Haswell Gui CC Section](../.gitbook/assets/image%20%2847%29.png)
+![Haswell Gui CC Section](../.gitbook/assets/image%20%2850%29.png)
 
 ### Explanation
 
@@ -321,7 +321,7 @@ If you want to test out a new theme \(and I suggest you look at [_clover-next-bl
 
 ## Graphics
 
-In the past, we'd setup the iGPU here, but since we already did that via Properties in the _Devices_ section, we have nothing to really configure here.  **NOTE**:  When Clover detects an Intel iGPU, it _automatically_ enables Intel Injection if the Graphics section doesn't exist in the config.plist.  To bypass this, you can explicitly disable injection using the raw XML below, or by clicking the "Inject Intel" button once to check it, and once to uncheck it in CC.
+In the past, we'd setup the iGPU here, but since we already did that via Properties in the _Devices_ section, we have nothing to really configure here. **NOTE**: When Clover detects an Intel iGPU, it _automatically_ enables Intel Injection if the Graphics section doesn't exist in the config.plist. To bypass this, you can explicitly disable injection using the raw XML below, or by clicking the "Inject Intel" button once to check it, and once to uncheck it in CC.
 
 ### Raw XML
 
@@ -428,7 +428,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2848%29.png)
+![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2837%29.png)
 
 ### Explanation
 
@@ -478,9 +478,9 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Haswell Rt Variables CC Section](../.gitbook/assets/image%20%2816%29.png)
+![Haswell Rt Variables CC Section](../.gitbook/assets/image%20%2817%29.png)
 
-![Haswell SMBIOS CC Section](../.gitbook/assets/image%20%2828%29.png)
+![Haswell SMBIOS CC Section](../.gitbook/assets/image%20%2829%29.png)
 
 ### Explanation
 
@@ -549,7 +549,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2831%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2832%29.png)
 
 ### Explanation
 

@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2853%29.png)
+![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2857%29.png)
 
-![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2844%29.png)
+![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2847%29.png)
 
 ### Explanation
 
@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Skylake Boot CC Section](../.gitbook/assets/image%20%2814%29.png)
+![Skylake Boot CC Section](../.gitbook/assets/image%20%2815%29.png)
 
 ### Explanation
 
@@ -238,7 +238,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2851%29.png)
+![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2854%29.png)
 
 ![Skylake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image.png)
 
@@ -298,7 +298,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Skylake Gui CC Section](../.gitbook/assets/image%20%2847%29.png)
+![Skylake Gui CC Section](../.gitbook/assets/image%20%2850%29.png)
 
 ### Explanation
 
@@ -331,7 +331,7 @@ If you want to test out a new theme \(and I suggest you look at [_clover-next-bl
 
 ## Graphics
 
-In the past, we'd setup the iGPU here, but since we already did that via Properties in the _Devices_ section, we have nothing to really configure here.  **NOTE**:  When Clover detects an Intel iGPU, it _automatically_ enables Intel Injection if the Graphics section doesn't exist in the config.plist.  To bypass this, you can explicitly disable injection using the raw XML below, or by clicking the "Inject Intel" button once to check it, and once to uncheck it in CC.
+In the past, we'd setup the iGPU here, but since we already did that via Properties in the _Devices_ section, we have nothing to really configure here. **NOTE**: When Clover detects an Intel iGPU, it _automatically_ enables Intel Injection if the Graphics section doesn't exist in the config.plist. To bypass this, you can explicitly disable injection using the raw XML below, or by clicking the "Inject Intel" button once to check it, and once to uncheck it in CC.
 
 ### Raw XML
 
@@ -438,7 +438,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2848%29.png)
+![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2813%29.png)
 
 ### Explanation
 
@@ -488,7 +488,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Skylake RtVariables CC Section](../.gitbook/assets/image%20%2829%29.png)
+![Skylake RtVariables CC Section](../.gitbook/assets/image%20%2830%29.png)
 
 ![Skylake SMBIOS CC Section](../.gitbook/assets/image%20%288%29.png)
 
@@ -555,7 +555,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2845%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2848%29.png)
 
 ### Explanation
 
