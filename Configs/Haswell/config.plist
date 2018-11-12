@@ -190,12 +190,32 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Port limit increase (PMHeart)</string>
+				<string>change 15 port limit to 26 in XHCI kext (credit PMHeart)</string>
+				<key>Disabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				g/sPD4MDBQAA
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>MatchOS</key>
+				<string>10.14.0</string>
+				<key>Name</key>
+				<string>com.apple.driver.usb.AppleUSBXHCI</string>
+				<key>Replace</key>
+				<data>
+				g/sPkJCQkJCQ
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>USB Port limit patch 10.14.1 18B45d (credits Ricky)</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
 				<data>
-				g/sPD4MDBQAA
+				g/sPD4OPBAAA
 				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
