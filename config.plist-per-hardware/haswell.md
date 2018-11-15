@@ -108,9 +108,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Haswell Acpi CC Section 1](../.gitbook/assets/image%20%287%29.png)
+![Haswell Acpi CC Section 1](../.gitbook/assets/image%20%288%29.png)
 
-![Haswell Acpi CC Section 2](../.gitbook/assets/image%20%2816%29.png)
+![Haswell Acpi CC Section 2](../.gitbook/assets/image%20%2817%29.png)
 
 ### Explanation
 
@@ -163,7 +163,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Haswell Boot CC Section](../.gitbook/assets/image%20%2815%29.png)
+![Haswell Boot CC Section](../.gitbook/assets/image%20%2816%29.png)
 
 ### Explanation
 
@@ -230,9 +230,11 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Haswell Devices CC Section - iGPU](../.gitbook/assets/image%20%2835%29.png)
+![Haswell Devices CC Section - iGPU](../.gitbook/assets/image%20%2836%29.png)
 
-![Haswell Devices CC Section - iGPU \(Connectorless\) + dGPU](../.gitbook/assets/image%20%2818%29.png)
+![Haswell Devices CC Section - iGPU \(Connectorless\) + dGPU](../.gitbook/assets/image%20%2819%29.png)
+
+![Device-Id fake for HD 4400 --&amp;gt; HD 4600](../.gitbook/assets/image%20%285%29.png)
 
 ### Explanation
 
@@ -265,6 +267,35 @@ The two ig-platform-id's we use are as follows:
   * `04001204` when hex-swapped
   * `BAASBA==` when the hex-swapped version is converted to base64
 
+I added another screenshot as well that shows a `device-id` fake in case you have an HD 4400 which is unsupported in macOS.
+
+For this - we follow a similar procedure as our above ig-platform-id hex swapping - but this time, we only work with the first two pairs of hex bytes. If we think of our device id as `0xAABB0000`, our swapped version would look like `0xBBAA0000`. We don't do anything with the last 2 pairs of hex bytes.
+
+The device-id fake is setup like so:
+
+* `0x04120000` - this is the device id for HD 4600 which _does_ have support in macOS
+  * `12040000` when hex swapped
+  * `EgQAAA==` when the hex-swapped version is converted to base64
+
+If using the raw xml, your Properties would look like this \(make sure to still use the appropriate ig-platform-id for your setup\):
+
+```markup
+        <key>Properties</key>
+        <dict>
+            <key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+            <dict>
+                <key>device-id</key>
+                <data>
+                EgQAAA==
+                </data>
+                <key>AAPL,ig-platform-id</key>
+                <data>
+                AwAiDQ==
+                </data>
+            </dict>
+        </dict>
+```
+
 ## Disable Drivers
 
 We have nothing to do here.
@@ -288,7 +319,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Haswell Gui CC Section](../.gitbook/assets/image%20%2850%29.png)
+![Haswell Gui CC Section](../.gitbook/assets/image%20%2851%29.png)
 
 ### Explanation
 
@@ -448,7 +479,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2837%29.png)
+![Haswell KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2838%29.png)
 
 ### Explanation
 
@@ -498,9 +529,9 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Haswell Rt Variables CC Section](../.gitbook/assets/image%20%2817%29.png)
+![Haswell Rt Variables CC Section](../.gitbook/assets/image%20%2818%29.png)
 
-![Haswell SMBIOS CC Section](../.gitbook/assets/image%20%2829%29.png)
+![Haswell SMBIOS CC Section](../.gitbook/assets/image%20%2830%29.png)
 
 ### Explanation
 
@@ -569,7 +600,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2832%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2833%29.png)
 
 ### Explanation
 
