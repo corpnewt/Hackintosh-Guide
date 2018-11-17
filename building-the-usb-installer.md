@@ -1,6 +1,6 @@
 # Building the USB Installer
 
-Once you have your 8+GB USB installer, we need to make sure it's set up properly. If you don't plan on patching the installer \(and I don't\) - you want the USB setup the following way:
+Once you have your 8+GB USB installer, we need to make sure it's set up properly. If you don't plan on patching the installer \(and I don't\) - you want the USB setup the following way 。:  
 
 * GUID Partition Map
 * 1 Partition
