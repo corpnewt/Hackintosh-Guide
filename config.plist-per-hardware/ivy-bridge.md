@@ -151,9 +151,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 #### Patches:
 
-![Ivy Acpi CC Section 1](../.gitbook/assets/image%20%2865%29.png)
+![Ivy Acpi CC Section 1](../.gitbook/assets/image%20%2870%29.png)
 
-![Ivy Acpi CC Section 2](../.gitbook/assets/image%20%2867%29.png)
+![Ivy Acpi CC Section 2](../.gitbook/assets/image%20%2872%29.png)
 
 The first thing we'll go over is the _Patches_ section. This section allows us to dynamically rename parts of the DSDT via Clover. Since we're not running a real mac, and macOS is pretty particular with how things are named, we can make non-destructive changes to keep things mac-friendly. We have three entries here:
 
@@ -213,7 +213,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 We have a few boot args set here:
 
-![Ivy Boot CC Section](../.gitbook/assets/image%20%2820%29.png)
+![Ivy Boot CC Section](../.gitbook/assets/image%20%2822%29.png)
 
 * `-v` - this enables verbose mode, which shows all the _behind-the-scenes_ text that scrolls by as you're booting instead of the Apple logo and progress bar.  It's invaluable to any Hackintosher, as it gives you an inside look at the boot process, and can help you identify issues, problem kexts, etc.
 * `dart=0` - this is just an extra layer of protection against Vt-d issues.
@@ -336,7 +336,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Ivy Gui CC Section](../.gitbook/assets/image%20%2856%29.png)
+![Ivy Gui CC Section](../.gitbook/assets/image%20%2861%29.png)
 
 ### Explanation
 
@@ -490,7 +490,7 @@ We have a couple checkboxes selected here:
 * _KernelPM_ - this setting prevents writing to MSR 0xe2 which can prevent a kernel panic at boot when using XCPM.
 * _AppleIntelCPUPM_ - this does the same as _KernelPM_, but when using AppleIntelCPUPowerManagement instead.
 
-![Ivy KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2840%29.png)
+![Ivy KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2843%29.png)
 
 #### KextsToPatch:
 
@@ -545,9 +545,9 @@ macserial -a | grep -i iMac13,2
 
 Which would give us output similar to the following:
 
-![Ivy Rt Variables CC Section](../.gitbook/assets/image%20%2811%29.png)
+![Ivy Rt Variables CC Section](../.gitbook/assets/image%20%2813%29.png)
 
-![Ivy SMBIOS CC Section](../.gitbook/assets/image%20%2850%29.png)
+![Ivy SMBIOS CC Section](../.gitbook/assets/image%20%2854%29.png)
 
 ```text
       iMac13,2 | C02JX0KSDNCW | C02253902J9F2FRCB
@@ -596,7 +596,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2836%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2839%29.png)
 
 ### Explanation
 
