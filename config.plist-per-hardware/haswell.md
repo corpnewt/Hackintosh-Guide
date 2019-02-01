@@ -68,6 +68,34 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
                 </dict>
                 <dict>
                     <key>Comment</key>
+                    <string>change XHCI to XHC</string>
+                    <key>Disabled</key>
+                    <false/>
+                    <key>Find</key>
+                    <data>
+                    WEhDSQ==
+                    </data>
+                    <key>Replace</key>
+                    <data>
+                    WEhDXw==
+                    </data>
+                </dict>
+                <dict>
+                    <key>Comment</key>
+                    <string>change XHC1 to XHC</string>
+                    <key>Disabled</key>
+                    <false/>
+                    <key>Find</key>
+                    <data>
+                    WEhDMQ==
+                    </data>
+                    <key>Replace</key>
+                    <data>
+                    WEhDXw==
+                    </data>
+                </dict>
+                <dict>
+                    <key>Comment</key>
                     <string>change SAT0 to SATA</string>
                     <key>Disabled</key>
                     <false/>
@@ -120,6 +148,8 @@ The first thing we'll go over is the _Patches_ section. This section allows us t
 
 * _change EHC1 to EH01 -_ helps avoid a conflict with built-in USB injectors
 * _change EHC2 to EH02_ - helps avoid a conflict with built-in USB injectors
+* _change XHC1 to XHC -_ helps avoid a conflict with built-in USB injectors
+* _change XHCI to XHC_ - helps avoid a conflict with built-in USB injectors
 * _change SAT0 to SATA_ - for potential SATA compatibility
 
 #### Fixes:
