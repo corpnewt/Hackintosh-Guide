@@ -38,7 +38,7 @@ This will output `External` on the next line. We use the `&& echo` to output a n
 
 You can also convert from ASCII to base64 \(handy for working with ACPI renames - more about that later\) with the following in Terminal.app:
 
-`echo External | base64`
+`echo -n External | base64`
 
 This will spit out `RXh0ZXJuYWw=` which is exactly what we'd expect.
 
