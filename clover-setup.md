@@ -6,7 +6,7 @@ Fire up your Clover install package. On the 2nd page of the installer **make sur
 
 ![2nd Page of the Clover Installer - Note the &quot;Customize&quot; button in the bottom left](.gitbook/assets/image%20%2826%29.png)
 
-The _usual_ options you want to check in the Customize menu are shown in the following screenshots with an explanation of each after:
+The _usual_ options you want to check in the Customize menu are shown in the following screenshots with an explanation of each after \(**Note**: any non-Z370 300-series board will need _EmuVariableUefi-64_ as well\):
 
 ![UEFI Booting Only and Install in the ESP](.gitbook/assets/image%20%2817%29.png)
 
