@@ -147,13 +147,13 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Ivy Acpi CC Section 1](../.gitbook/assets/image%20%288%29.png)
-
-![Ivy Acpi CC Section 2](../.gitbook/assets/image%20%2817%29.png)
-
 ### Explanation
 
 #### Patches:
+
+![Ivy Acpi CC Section 1](../.gitbook/assets/image%20%2865%29.png)
+
+![Ivy Acpi CC Section 2](../.gitbook/assets/image%20%2867%29.png)
 
 The first thing we'll go over is the _Patches_ section. This section allows us to dynamically rename parts of the DSDT via Clover. Since we're not running a real mac, and macOS is pretty particular with how things are named, we can make non-destructive changes to keep things mac-friendly. We have three entries here:
 
@@ -170,7 +170,7 @@ If we look then at the _Fixes_ section, we'll see that we have a few things chec
 * _FixShutdown_ - this can help with some boards that prefer to restart instead of shutdown.  Sometimes it can cause shutdown issues on other boards \(ironic, right?\), so if you have issues shutting down with this enabled, look at disabling it.
 * The remaining fixes help avoid IRQ conflicts and etc, and are not known to cause issues.  They may not be necessary for all hardware, but do not negatively impact anything if applied.
 
-__Note:__ If you use an Ivy Bridge CPU with a 6-series motherboard, you will also need to enable _AddDTGP_ and _AddIMEI_, and you will have to fake the IMIE to `0x1e3a8086` (I will go over this in the _Devices_ section).
+**Note:** If you use an Ivy Bridge CPU with a 6-series motherboard, you will also need to enable _AddDTGP_ and _AddIMEI_, and you will have to fake the IMIE to `0x1e3a8086` \(I will go over this in the _Devices_ section\).
 
 #### Drop Tables:
 
@@ -185,7 +185,7 @@ We touched in gently on DSDT with our _Patches_ section - and this is a a bit of
 The only other things we've done on this page are enable these two checkboxes.
 
 * _FixHeaders_ - this is just a double-up of our _MATS_ table dropping.  This checkbox tells Clover to sanitize headers to avoid kernel panics related to unprintable characters.
-* _Generate_ - this is set to an empty dictionary (you can acheive the same by ticking any of the _Generate_ options, then unticking them in CC) which prevents Clover from generating any C or P states, and also prevents it from adding _PluginType_ (as that's for Haswell and newer CPUs).
+* _Generate_ - this is set to an empty dictionary \(you can acheive the same by ticking any of the _Generate_ options, then unticking them in CC\) which prevents Clover from generating any C or P states, and also prevents it from adding _PluginType_ \(as that's for Haswell and newer CPUs\).
 
 ## Boot
 
@@ -207,13 +207,13 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Ivy Boot CC Section](../.gitbook/assets/image%20%2816%29.png)
-
 ### Explanation
 
 #### Arguments:
 
 We have a few boot args set here:
+
+![Ivy Boot CC Section](../.gitbook/assets/image%20%2820%29.png)
 
 * `-v` - this enables verbose mode, which shows all the _behind-the-scenes_ text that scrolls by as you're booting instead of the Apple logo and progress bar.  It's invaluable to any Hackintosher, as it gives you an inside look at the boot process, and can help you identify issues, problem kexts, etc.
 * `dart=0` - this is just an extra layer of protection against Vt-d issues.
@@ -275,20 +275,21 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Ivy Devices CC Section - iGPU](../.gitbook/assets/image%20%2836%29.png)
-
 ### Explanation
 
 #### Fake ID:
 
 This section remains empty for our example setup, however, if you run an Ivy CPU with a 6-series board, you will need to have your IMEI faked as follows:
-```xml
+
+```markup
         <key>FakeID</key>
         <dict>
             <key>IMEI</key>
             <string>0x1e3a8086</string>
         </dict>
 ```
+
+![Ivy Devices CC Section](../.gitbook/assets/image%20%281%29.png)
 
 #### USB:
 
@@ -302,7 +303,7 @@ We also enabled _ResetHDA_ which puts the codec back in a neutral state between 
 
 #### Properties:
 
-This section is setup via Headkaze's [_Intel Framebuffer Patching Guide_](https://www.insanelymac.com/forum/topic/334899-intel-framebuffer-patching-using-whatevergreen/?tab=comments#comment-2626271) and applies only one actual property to begin, which is the _ig-platform-id_. The way we get the proper value for this is to look at the ig-platform-id we intend to use, then swap the pairs of hex bytes.  For this, we assume the user has an HD 4000 - HD 2000 and 2500 are _not_ supported in macOS, and if you have them, you can ignore the following iGPU-related info.
+This section is setup via Headkaze's [_Intel Framebuffer Patching Guide_](https://www.insanelymac.com/forum/topic/334899-intel-framebuffer-patching-using-whatevergreen/?tab=comments#comment-2626271) and applies only one actual property to begin, which is the _ig-platform-id_. The way we get the proper value for this is to look at the ig-platform-id we intend to use, then swap the pairs of hex bytes. For this, we assume the user has an HD 4000 - HD 2000 and 2500 are _not_ supported in macOS, and if you have them, you can ignore the following iGPU-related info.
 
 If we think of our ig-plat as `0xAABBCCDD`, our swapped version would look like `0xDDCCBBAA`.
 
@@ -335,7 +336,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Ivy Gui CC Section](../.gitbook/assets/image%20%2851%29.png)
+![Ivy Gui CC Section](../.gitbook/assets/image%20%2856%29.png)
 
 ### Explanation
 
@@ -387,6 +388,8 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 ```markup
     <key>KernelAndKextPatches</key>
     <dict>
+        <key>AppleIntelCPUPM</key>
+        <true/>
         <key>KernelPm</key>
         <true/>
         <key>KextsToPatch</key>
@@ -475,8 +478,6 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Ivy KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2838%29.png)
-
 ### Explanation
 
 In this section, we've enabled a few settings and added some kext patches.
@@ -488,6 +489,8 @@ We have a couple checkboxes selected here:
 * _Apple RTC_ - this ensures that we don't have a BIOS reset on reboot.
 * _KernelPM_ - this setting prevents writing to MSR 0xe2 which can prevent a kernel panic at boot when using XCPM.
 * _AppleIntelCPUPM_ - this does the same as _KernelPM_, but when using AppleIntelCPUPowerManagement instead.
+
+![Ivy KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2840%29.png)
 
 #### KextsToPatch:
 
@@ -526,10 +529,6 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Ivy Rt Variables CC Section](../.gitbook/assets/image%20%2818%29.png)
-
-![Ivy SMBIOS CC Section](../.gitbook/assets/image%20%2830%29.png)
-
 ### Explanation
 
 For setting up the SMBIOS info, I use acidanthera's [_macserial_](https://github.com/acidanthera/macserial) application. I wrote a [_python script_](https://github.com/corpnewt/GenSMBIOS) that can leverage it as well \(and auto-saves to the config.plist when selected\). There's plenty of info that's left blank to allow Clover to fill in the blanks; this means that updating Clover will update the info passed, and not require you to also update your config.plist.
@@ -545,6 +544,10 @@ macserial -a | grep -i iMac13,2
 ```
 
 Which would give us output similar to the following:
+
+![Ivy Rt Variables CC Section](../.gitbook/assets/image%20%2811%29.png)
+
+![Ivy SMBIOS CC Section](../.gitbook/assets/image%20%2850%29.png)
 
 ```text
       iMac13,2 | C02JX0KSDNCW | C02253902J9F2FRCB
@@ -593,7 +596,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2833%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2836%29.png)
 
 ### Explanation
 
@@ -614,3 +617,4 @@ This setting tells clover to set the SmUUID as the `system-id` at boot - which i
 ## Saving
 
 At this point, you can do _File -&gt; Save_ to save the config.plist. If you have issues saving directly to the EFI, you can save it on the Desktop, then just copy it over. I'll leave the [sample config.plist here](https://github.com/corpnewt/Hackintosh-Guide/blob/master/Configs/Ivy%20Bridge/config.plist) too.
+
