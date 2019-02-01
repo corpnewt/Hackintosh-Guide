@@ -25,6 +25,8 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
         <dict>
             <key>Fixes</key>
             <dict>
+                <key>AddMCHC</key>
+                <true/>
                 <key>FixHPET</key>
                 <true/>
                 <key>FixIPIC</key>
@@ -565,7 +567,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Explanation
 
-For setting up the SMBIOS info, I use acidanthera's [_macserial_](https://github.com/acidanthera/macserial) application. I wrote a [_python script_](https://github.com/corpnewt/Plist-Tool) that can leverage it as well \(and auto-saves to the config.plist when selected\). There's plenty of info that's left blank to allow Clover to fill in the blanks; this means that updating Clover will update the info passed, and not require you to also update your config.plist.
+For setting up the SMBIOS info, I use acidanthera's [_macserial_](https://github.com/acidanthera/macserial) application. I wrote a [_python script_](https://github.com/corpnewt/GenSMBIOS) that can leverage it as well \(and auto-saves to the config.plist when selected\). There's plenty of info that's left blank to allow Clover to fill in the blanks; this means that updating Clover will update the info passed, and not require you to also update your config.plist.
 
 For this Haswell example, I chose the _iMac15,1_ SMBIOS. The typical breakdown is as follows:
 
@@ -604,7 +606,7 @@ The `Serial` part gets copied to _SMBIOS -&gt; Serial Number._
 
 The `Board Serial` part gets copied to _SMBIOS -&gt; Board Serial Number_ as well as _Rt Variables -&gt; MLB._
 
-We can create an SmUUID by running `uuidgen` in the terminal \(or it's auto-generated via my _Plist-Tool_ script\) - and that gets copied to _SMBIOS -&gt; SmUUID_.
+We can create an SmUUID by running `uuidgen` in the terminal \(or it's auto-generated via my _GenSMBIOS_ script\) - and that gets copied to _SMBIOS -&gt; SmUUID_.
 
 We set _Rt Variables -&gt; ROM_ to `UseMacAddr0` which just utilizes our onboard Mac address - this should be unique enough to not conflict with any others.
 
