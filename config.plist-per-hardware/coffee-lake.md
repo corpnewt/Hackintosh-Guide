@@ -606,7 +606,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
         <key>BooterConfig</key>
         <string>0x28</string>
         <key>CsrActiveConfig</key>
-        <string>0x3E7</string>
+        <string>0x67</string>
         <key>MLB</key>
         <string>C02726902CDH69F1M</string>
         <key>ROM</key>
@@ -675,11 +675,11 @@ We can create an SmUUID by running `uuidgen` in the terminal \(or it's auto-gene
 
 We set _Rt Variables -&gt; ROM_ to `UseMacAddr0` which just utilizes our onboard Mac address - this should be unique enough to not conflict with any others.
 
-_BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which effectively disables SIP. You can choose a number of other options to enable/disable sections of SIP. Some common ones are as follows:
+_BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x67` which effectively disables SIP. You can choose a number of other options to enable/disable sections of SIP. Some common ones are as follows:
 
 * `0x0` - SIP completely enabled
 * `0x3` - Allow unsigned kexts and writing to protected fs locations
-* `0x3e7` - SIP completely disabled
+* `0x67` - SIP completely disabled
 
 ## System Parameters
 
