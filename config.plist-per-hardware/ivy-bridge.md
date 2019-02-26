@@ -490,7 +490,7 @@ We have a couple checkboxes selected here:
 * _KernelPM_ - this setting prevents writing to MSR 0xe2 which can prevent a kernel panic at boot when using XCPM.
 * _AppleIntelCPUPM_ - this does the same as _KernelPM_, but when using AppleIntelCPUPowerManagement instead.
 
-![Ivy KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2843%29.png)
+![Ivy KernelAndKextPatches CC Section](../.gitbook/assets/ivykakp.png)
 
 #### KextsToPatch:
 
