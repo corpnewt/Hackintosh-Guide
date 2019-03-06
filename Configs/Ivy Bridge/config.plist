@@ -162,6 +162,11 @@
 			<true/>
 		</dict>
 	</dict>
+	<key>Graphics</key>
+	<dict>
+		<key>Inject</key>
+		<false/>
+	</dict>
 	<key>GUI</key>
 	<dict>
 		<key>Scan</key>
