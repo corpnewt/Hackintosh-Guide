@@ -1,6 +1,6 @@
 # Config.plist Basics
 
-The _config.plist_ resides at _/Volumes/EFI/EFI/CLOVER/config.plist_ and is one of the tougher files to work with for those new to the Hackintosh world. We'll go into some of the basics of the structure here, then break out into different sections for different hardware config setup.
+The _config.plist_ resides at _/Volumes/EFI/CLOVER/config.plist_ and is one of the tougher files to work with for those new to the Hackintosh world. We'll go into some of the basics of the structure here, then break out into different sections for different hardware config setup.
 
 ## What Is It?
 
