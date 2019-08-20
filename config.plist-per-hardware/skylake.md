@@ -110,9 +110,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ### Clover Configurator Screenshots
 
-![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2847%29.png)
+![Skylake Acpi CC Section 1](../.gitbook/assets/image%20%2850%29.png)
 
-![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2858%29.png)
+![Skylake Acpi CC Section 2](../.gitbook/assets/image%20%2863%29.png)
 
 ### Explanation
 
@@ -155,7 +155,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
     <key>Boot</key>
     <dict>
         <key>Arguments</key>
-        <string>keepsyms=1 dart=0 debug=0x100 shikigva=40 -v</string>
+        <string>keepsyms=1 dart=0 debug=0x100 -v</string>
         <key>DefaultVolume</key>
         <string>LastBootedVolume</string>
         <key>Timeout</key>
@@ -165,7 +165,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 ### Clover Configurator Screenshots
 
-![Skylake Boot CC Section](../.gitbook/assets/image%20%2820%29.png)
+![Skylake Boot CC Section](../.gitbook/assets/image%20%2868%29.png)
 
 ### Explanation
 
@@ -177,9 +177,6 @@ We have a few boot args set here:
 * `dart=0` - this is just an extra layer of protection against Vt-d issues.
 * `debug=0x100` - this prevents a reboot on a kernel panic.  That way you can \(hopefully\) glean some useful info and follow the breadcrumbs to get past the issues.
 * `keepsyms=1` - this is a companion setting to `debug=0x100` that tells the OS to also print the symbols on a kernel panic.   That can give some more helpful insight as to what's causing the panic itself.
-* `shikigva=40` - this flag is specific to the iGPU.  It enables a few _Shiki_ settings that do the following \(found [_here_](https://github.com/acidanthera/WhateverGreen/blob/master/WhateverGreen/kern_shiki.hpp#L35-L74)\):
-  * `8 - AddExecutableWhitelist` - ensures that processes in the whitelist are patched.
-  * `32 - ReplaceBoardID` - replaces board-id used by AppleGVA by a different board-id.
 
 #### DefaultBootVolume and Timeout:
 
@@ -240,7 +237,7 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2865%29.png)
+![Skylake Devices CC Section - iGPU](../.gitbook/assets/image%20%2871%29.png)
 
 ![Skylake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image.png)
 
@@ -300,7 +297,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Skylake Gui CC Section](../.gitbook/assets/image%20%2861%29.png)
+![Skylake Gui CC Section](../.gitbook/assets/image%20%2866%29.png)
 
 ### Explanation
 
@@ -460,7 +457,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2818%29.png)
+![Skylake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2820%29.png)
 
 ### Explanation
 
@@ -510,7 +507,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Skylake RtVariables CC Section](../.gitbook/assets/image%20%2837%29.png)
+![Skylake RtVariables CC Section](../.gitbook/assets/image%20%2840%29.png)
 
 ![Skylake SMBIOS CC Section](../.gitbook/assets/image%20%2812%29.png)
 
@@ -577,7 +574,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2859%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2864%29.png)
 
 ### Explanation
 

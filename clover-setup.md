@@ -4,15 +4,15 @@
 
 Fire up your Clover install package. On the 2nd page of the installer **make sure to select your USB as the destination**. We also want to **Customize** the installation - as the defaults are pretty lackluster.
 
-![2nd Page of the Clover Installer - Note the &quot;Customize&quot; button in the bottom left](.gitbook/assets/image%20%2826%29.png)
+![2nd Page of the Clover Installer - Note the &quot;Customize&quot; button in the bottom left](.gitbook/assets/image%20%2829%29.png)
 
 The _usual_ options you want to check in the Customize menu are shown in the following screenshots with an explanation of each after \(**Note**: any non-Z370 300-series board will need _EmuVariableUefi-64_ as well\):
 
-![UEFI Booting Only and Install in the ESP](.gitbook/assets/image%20%2817%29.png)
+![UEFI Booting Only and Install in the ESP](.gitbook/assets/image%20%2819%29.png)
 
-![ApfsDriverLoader and AptioMemoryFix under UEFI Drivers](.gitbook/assets/image%20%2832%29.png)
+![ApfsDriverLoader and AptioMemoryFix under UEFI Drivers](.gitbook/assets/image%20%2835%29.png)
 
-![HFSPlus under UEFI Drivers - although VboxHfs-64 works as well](.gitbook/assets/image%20%2851%29.png)
+![HFSPlus under UEFI Drivers - although VboxHfs-64 works as well](.gitbook/assets/image%20%2855%29.png)
 
 * _Install Clover for UEFI booting only_
 * _Install Clover to the ESP_

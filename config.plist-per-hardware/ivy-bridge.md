@@ -151,9 +151,9 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 #### Patches:
 
-![Ivy Acpi CC Section 1](../.gitbook/assets/image%20%2870%29.png)
+![Ivy Acpi CC Section 1](../.gitbook/assets/image%20%2876%29.png)
 
-![Ivy Acpi CC Section 2](../.gitbook/assets/image%20%2872%29.png)
+![Ivy Acpi CC Section 2](../.gitbook/assets/image%20%2878%29.png)
 
 The first thing we'll go over is the _Patches_ section. This section allows us to dynamically rename parts of the DSDT via Clover. Since we're not running a real mac, and macOS is pretty particular with how things are named, we can make non-destructive changes to keep things mac-friendly. We have three entries here:
 
@@ -197,7 +197,7 @@ We don't need to do _too much_ here, but we'll tweak a few things.
     <key>Boot</key>
     <dict>
         <key>Arguments</key>
-        <string>keepsyms=1 dart=0 debug=0x100 shikigva=40 -xcpm -v</string>
+        <string>keepsyms=1 dart=0 debug=0x100 -xcpm -v</string>
         <key>DefaultVolume</key>
         <string>LastBootedVolume</string>
         <key>Timeout</key>
@@ -213,15 +213,12 @@ We don't need to do _too much_ here, but we'll tweak a few things.
 
 We have a few boot args set here:
 
-![Ivy Boot CC Section](../.gitbook/assets/image%20%2822%29.png)
+![Ivy Boot CC Section](../.gitbook/assets/image%20%2853%29.png)
 
 * `-v` - this enables verbose mode, which shows all the _behind-the-scenes_ text that scrolls by as you're booting instead of the Apple logo and progress bar.  It's invaluable to any Hackintosher, as it gives you an inside look at the boot process, and can help you identify issues, problem kexts, etc.
 * `dart=0` - this is just an extra layer of protection against Vt-d issues.
 * `debug=0x100` - this prevents a reboot on a kernel panic.  That way you can \(hopefully\) glean some useful info and follow the breadcrumbs to get past the issues.
 * `keepsyms=1` - this is a companion setting to `debug=0x100` that tells the OS to also print the symbols on a kernel panic.   That can give some more helpful insight as to what's causing the panic itself.
-* `shikigva=40` - this flag is specific to the iGPU.  It enables a few _Shiki_ settings that do the following \(found [_here_](https://github.com/acidanthera/WhateverGreen/blob/master/WhateverGreen/kern_shiki.hpp#L35-L74)\):
-  * `8 - AddExecutableWhitelist` - ensures that processes in the whitelist are patched.
-  * `32 - ReplaceBoardID` - replaces board-id used by AppleGVA by a different board-id.
 * `-xcpm` - attempts to force Ivy CPUs to use XnuCPUPowerManagement
 
 #### DefaultBootVolume and Timeout:
@@ -336,7 +333,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Ivy Gui CC Section](../.gitbook/assets/image%20%2861%29.png)
+![Ivy Gui CC Section](../.gitbook/assets/image%20%2866%29.png)
 
 ### Explanation
 
@@ -547,7 +544,7 @@ Which would give us output similar to the following:
 
 ![Ivy Rt Variables CC Section](../.gitbook/assets/image%20%2813%29.png)
 
-![Ivy SMBIOS CC Section](../.gitbook/assets/image%20%2854%29.png)
+![Ivy SMBIOS CC Section](../.gitbook/assets/image%20%2858%29.png)
 
 ```text
       iMac13,2 | C02JX0KSDNCW | C02253902J9F2FRCB
@@ -596,7 +593,7 @@ _BooterConfig_ gets set to `0x28`, and _CsrActiveConfig_ is set to `0x3e7` which
 
 ### Clover Configurator Screenshots
 
-![System Parameters CC Section](../.gitbook/assets/image%20%2839%29.png)
+![System Parameters CC Section](../.gitbook/assets/image%20%2842%29.png)
 
 ### Explanation
 
