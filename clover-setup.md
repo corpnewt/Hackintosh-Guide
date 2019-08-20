@@ -12,7 +12,7 @@ The _usual_ options you want to check in the Customize menu are shown in the fol
 
 ![ApfsDriverLoader and AptioMemoryFix under UEFI Drivers](.gitbook/assets/image%20%2835%29.png)
 
-![HFSPlus under UEFI Drivers - although VboxHfs-64 works as well](.gitbook/assets/image%20%2855%29.png)
+![HFSPlus under UEFI Drivers - although VboxHfs-64 works as well](.gitbook/assets/image%20%2856%29.png)
 
 * _Install Clover for UEFI booting only_
 * _Install Clover to the ESP_

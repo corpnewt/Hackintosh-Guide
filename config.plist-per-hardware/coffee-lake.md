@@ -112,7 +112,7 @@ The default Clover settings are pretty overdone and can cause some issues. We'll
 
 ![Coffee Lake Acpi CC Section 1](../.gitbook/assets/image%20%287%29.png)
 
-![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2863%29.png)
+![Coffee Lake Acpi CC Section 2](../.gitbook/assets/image%20%2864%29.png)
 
 ![Coffee Lake Read-Only RTC Fix](../.gitbook/assets/image%20%2817%29.png)
 
@@ -126,7 +126,9 @@ The first thing we'll go over is the _Patches_ section. This section allows us t
 * _change XHC1 to XHC_ - helps avoid a conflict with built-in USB injectors
 * _change SAT0 to SATA_ - for potential SATA compatibility
 
-You **may** also need the following Read-Only RTC fix \(read about it [here](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2)\) if you have a _true_ 300-series board \(non Z370\) and you suffer a boot hang around [this point](https://raw.githubusercontent.com/corpnewt/Hackintosh-Guide/master/.gitbook/assets/RORTC.jpg).
+You **may** also need the following Read-Only RTC fix \(read about it [here](https://www.hackintosh-forum.de/forum/thread/39846-asrock-z390-taichi-ultimate/?pageNo=2)\) if you have a _true_ 300-series board \(non Z370\) and you suffer a boot hang around this point:
+
+![Read-Only RTC Boot Stall](../.gitbook/assets/image%20%2840%29.png)
 
 The raw XML for that specific patch looks like so:
 
@@ -260,9 +262,9 @@ We'll handle some slick property injection for _WhateverGreen_ here, and do some
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%2873%29.png)
+![Coffee Lake Devices CC Section - iGPU](../.gitbook/assets/image%20%2874%29.png)
 
-![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2847%29.png)
+![Coffee Lake Devices CC Section - iGPU Connectorless](../.gitbook/assets/image%20%2848%29.png)
 
 ![Device-Id fake for i3-8100 UHD 630](../.gitbook/assets/image%20%289%29.png)
 
@@ -350,7 +352,7 @@ I saw the issue in [a reddit post](https://www.reddit.com/r/hackintosh/comments/
 
 I opened up IORegistryExplorer and in the search bar typed `IGPU` \(this is sometimes named `GFX0` in ACPI, but Lilu + WhateverGreen should rename it properly\) and got the following screen:
 
-![Search for IGPU in IOReg](../.gitbook/assets/image%20%2877%29.png)
+![Search for IGPU in IOReg](../.gitbook/assets/image%20%2878%29.png)
 
 Once we've located `IGPU` in IOReg, we can clear our search - this reveals all the info around the `IGPU` section while keeping our place:
 
@@ -373,7 +375,7 @@ Since my incorrect port was located at AppleIntelFramebuffer@1, this is port `1`
 
 I replaced the `conX` in both patches with `con1` to reflect the port that I am changing, then set the values as listed above.
 
-![](../.gitbook/assets/image%20%2841%29.png)
+![](../.gitbook/assets/image%20%2842%29.png)
 
 ```markup
         <key>Properties</key>
@@ -437,7 +439,7 @@ We have nothing to do here.
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2866%29.png)
+![Coffee Lake Gui CC Section](../.gitbook/assets/image%20%2867%29.png)
 
 ### Explanation
 
@@ -597,7 +599,7 @@ In the past, we'd setup the iGPU here, but since we already did that via Propert
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2872%29.png)
+![Coffee Lake KernelAndKextPatches CC Section](../.gitbook/assets/image%20%2873%29.png)
 
 ### Explanation
 
@@ -647,7 +649,7 @@ You'll notice that there are MatchOS values set for each of the USB port limit p
 
 ### Clover Configurator Screenshots
 
-![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2870%29.png)
+![Coffee Lake RtVariables CC Section](../.gitbook/assets/image%20%2871%29.png)
 
 ![Coffee Lake SMBIOS CC Section](../.gitbook/assets/image%20%2816%29.png)
 
