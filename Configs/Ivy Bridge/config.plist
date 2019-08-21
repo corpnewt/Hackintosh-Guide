@@ -129,7 +129,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>keepsyms=1 debug=0x100 -xcpm -v shikigva=40</string>
+		<string>keepsyms=1 debug=0x100 -xcpm -v</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Timeout</key>
