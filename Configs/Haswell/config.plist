@@ -122,7 +122,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>keepsyms=1 dart=0 debug=0x100 -v shikigva=40</string>
+		<string>keepsyms=1 dart=0 debug=0x100 -v</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Timeout</key>
