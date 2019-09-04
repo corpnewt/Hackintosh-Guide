@@ -8,7 +8,7 @@ The _config.plist_ is an XML property list. XML is a markup language that shares
 
 ### The Structure
 
-When Clover explores a _config.plist_ it expects to have certain parts in certain spots. The order and scope of your config are very important as putting information in the wrong spot can effectively hide it from Clover. You can view the general layout that Clover expects on the [Clover Wiki](https://clover-wiki.zetam.org/Configuration#Config.plist-structure).
+When Clover explores a _config.plist_ it expects to have certain parts in certain spots. The order and scope of your config are very important as putting information in the wrong spot can effectively hide it from Clover. You can view the general layout that Clover expects on the [Clover Wiki](https://sourceforge.net/p/cloverefiboot/wiki/Configuration/#configplist-structure).
 
 ### Data Types
 
