@@ -170,7 +170,7 @@ If we look then at the _Fixes_ section, we'll see that we have a few things chec
 * _FixShutdown_ - this can help with some boards that prefer to restart instead of shutdown.  Sometimes it can cause shutdown issues on other boards \(ironic, right?\), so if you have issues shutting down with this enabled, look at disabling it.
 * The remaining fixes help avoid IRQ conflicts and etc, and are not known to cause issues.  They may not be necessary for all hardware, but do not negatively impact anything if applied.
 
-**Note:** If you use an Ivy Bridge CPU with a 6-series motherboard, you will also need to enable _AddDTGP_ and _AddIMEI_, and you will have to fake the IMIE to `0x1e3a8086` \(I will go over this in the _Devices_ section\).
+**Note:** If you use an Ivy Bridge CPU with a 6-series motherboard, you will also need to enable _AddDTGP_ and _AddIMEI_, and you will have to fake the IMEI to `0x1e3a8086` \(I will go over this in the _Devices_ section\).
 
 #### Drop Tables:
 
