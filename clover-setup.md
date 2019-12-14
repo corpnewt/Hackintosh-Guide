@@ -8,7 +8,7 @@ Fire up your Clover install package. On the 3rd page of the installer **make sur
 
 The _usual_ options you want to check in the Customize menu are shown in the following screenshots with an explanation of each after \(**Note**: any non-Z370 300-series board will need _EmuVariableUefi-64_ as well - it is located under _UEFI Drivers -&gt; Additional drivers_ in current Clover packages\):
 
-![Recommended Customization Settings](.gitbook/assets/Screen Shot 2019-12-14 at 17.27.26.png)
+![Recommended Customization Settings](.gitbook/assets/Screen&#32;Shot&#32;2019-12-14&#32;at&#32;17.27.26.png)
 
 * _Install Clover for UEFI booting only_
 * _Install Clover to the ESP_
