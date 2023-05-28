@@ -36,13 +36,13 @@ While this looks similar to the _strings_ above, it's actually the _base64_ repr
 
 This will output `External` on the next line. We use the `&& echo` to output a newline after our text is spit out - this makes it easier to read.
 
-You can also convert from ASCII to base64 \(handy for working with ACPI renames - more about that later\) with the following in Terminal.app:
+You can also convert from ASCII to base64 (handy for working with ACPI renames - more about that later) with the following in Terminal.app:
 
 `echo -n External | base64`
 
 This will spit out `RXh0ZXJuYWw=` which is exactly what we'd expect.
 
-**Note -** Many plist editors \(Clover Configurator, Xcode, etc\) will display data as _hexadecimal_ instead of _base64_, so make sure you pay attention to which you're using.
+**Note -** Many plist editors (Clover Configurator, Xcode, etc) will display data as _hexadecimal_ instead of _base64_, so make sure you pay attention to which you're using.
 
 #### Booleans
 
@@ -60,7 +60,7 @@ These are _boolean_ values. You can think of them as _on/off_ values. Unlike the
 </array>
 ```
 
-This is an unordered list of items. If we wanted to gather up a collection of names, we could store them as `<string>` values in our `<array>` like the above example. They are accessed by index \(which is just the number they're at in the list\).
+This is an ordered list of items. If we wanted to gather up a collection of names, we could store them as `<string>` values in our `<array>` like the above example. They are accessed by index (which is just the number they're at in the list).
 
 #### Dictionaries
 
@@ -75,7 +75,7 @@ This is an unordered list of items. If we wanted to gather up a collection of na
 </dict>
 ```
 
-This denotes a _dictionary_. These, like _arrays_ are great for storing extra collections of data, but instead of being index based, they utilize _key/value_ organization. As you can see from the above example, we are able to store specific data about _Bob_ through the use of these _key/value_ pairs. All the keys are just text \(like our strings\).
+This denotes a _dictionary_. These, like _arrays_ are great for storing extra collections of data, but instead of being index based, they utilize _key/value_ organization. As you can see from the above example, we are able to store specific data about _Bob_ through the use of these _key/value_ pairs. All the keys are just text (like our strings).
 
 ### Examples
 
@@ -109,13 +109,13 @@ In this first example, we're just going to change a boolean value from true to f
 Whew, that might look like a lot up front, but we'll break things down. Firstly, I'll go over what the different keys mean:
 
 * `Comment` - this is just a comment to describe what the patch is doing.
-* `Disabled` - this is a bit counter-intuitive, but it's a boolean value that determines whether or not this patch is disabled.  If set to `<true/>`, the patch will be disabled, and Clover will ignore it.  If set to `<false/>` the patch is _not_ disabled, and it will be applied.
+* `Disabled` - this is a bit counter-intuitive, but it's a boolean value that determines whether or not this patch is disabled. If set to `<true/>`, the patch will be disabled, and Clover will ignore it. If set to `<false/>` the patch is _not_ disabled, and it will be applied.
 * `InfoPlistPatch` - this is a boolean value that tells Clover if we're patching the Info.plist of the kext instead of the binary.
 * `Name` - this is the actual kext we intend to patch.
 * `Find` - this is the base64 data we want to look for in the binary to patch.
-* `Replace` - this is what we will be replacing the `Find` data with \(if we find it\).
+* `Replace` - this is what we will be replacing the `Find` data with (if we find it).
 
-Alright, now I'll explain what this patch is actually for. Via the information in this patch, Clover will look for the _AppleAHCIPort_ kext and search for `RXh0ZXJuYWw=` \(which becomes `External` when we decode the data\) and replace it with `SW50ZXJuYWw=` \(which becomes `Internal` when we decode it\). The end result is that drives that are hot-pluggable \(and normally considered external drives\) will be displayed as internal drives and not have the orange icon on the desktop. This patching happens on the fly, and is non-destructive - meaning that the _AppleAHCIPort_ kext remains untouched on the system.
+Alright, now I'll explain what this patch is actually for. Via the information in this patch, Clover will look for the _AppleAHCIPort_ kext and search for `RXh0ZXJuYWw=` (which becomes `External` when we decode the data) and replace it with `SW50ZXJuYWw=` (which becomes `Internal` when we decode it). The end result is that drives that are hot-pluggable (and normally considered external drives) will be displayed as internal drives and not have the orange icon on the desktop. This patching happens on the fly, and is non-destructive - meaning that the _AppleAHCIPort_ kext remains untouched on the system.
 
 So - I guess at this point, I should explain how we would change a boolean value to disable this patch. I mentioned before how the `Disabled` key works - wo we'll change the `<false/>` on the next line to `<true/>` which sets this patch to _disabled_ like so:
 
@@ -144,7 +144,7 @@ Not too scary, right?
 
 #### Adding a New Dict to an Array
 
-This is one that I see quite often that can be a bit overwhelming for new folks. If you are told to add a new patch to _config.plist -&gt; ACPI -&gt; DSDT -&gt; Patches_, we'd first pop open our _config.plist_ and see what we're working with.
+This is one that I see quite often that can be a bit overwhelming for new folks. If you are told to add a new patch to _config.plist -> ACPI -> DSDT -> Patches_, we'd first pop open our _config.plist_ and see what we're working with.
 
 We'll assume for this example that the config looks like so:
 
@@ -203,7 +203,7 @@ We'll assume for this example that the config looks like so:
 
 As we look down the config, starting at the top, we can follow that path I outlined before. We see _ACPI_, and under that _DSDT_. Then underneath _DSDT_ is _Fixes_ and in-line with that is _Patches_. We're not concerned with the _Fixes_ section currently, so we'll just ignore that and focus on the _Patches_.
 
-Firstly, I'll point out that under the `<key>Patches</key>` is an opening array tag \(`<array>`\) - and then we have 2 dictionaries - each with similar keys to what we worked with in the prior example \(_Comment_, _Disabled_, _Find_, _Replace_\). After the dictionaries, we see the closing array tag \(`</array>`\). Our goal is to add a new dictionary in between the `<array>` and `</array>` tags while also avoiding slicing up the other existing dictionaries. The data that we'll be adding looks like so:
+Firstly, I'll point out that under the `<key>Patches</key>` is an opening array tag (`<array>`) - and then we have 2 dictionaries - each with similar keys to what we worked with in the prior example (_Comment_, _Disabled_, _Find_, _Replace_). After the dictionaries, we see the closing array tag (`</array>`). Our goal is to add a new dictionary in between the `<array>` and `</array>` tags while also avoiding slicing up the other existing dictionaries. The data that we'll be adding looks like so:
 
 ```markup
 <dict>
@@ -222,7 +222,7 @@ Firstly, I'll point out that under the `<key>Patches</key>` is an opening array 
 </dict>
 ```
 
-Like I mentioned prior, arrays are unordered - that means it doesn't matter whether we put our new dictionary before the existing 2, after them, or in between them. I'm going to add it to the end though - just above that last `</array>` tag like so:
+Like I mentioned prior, arrays are ordered - but for this example, it doesn't matter whether we put our new dictionary before the existing 2, after them, or in between them. I'm going to add it to the end though - just above that last `</array>` tag like so:
 
 ```markup
 <?xml version="1.0" encoding="UTF-8"?>
@@ -294,4 +294,3 @@ Like I mentioned prior, arrays are unordered - that means it doesn't matter whet
 #### More Examples
 
 I'll try to keep my ears open for more plist editing examples that people have issues with, and add them as needed.
-
